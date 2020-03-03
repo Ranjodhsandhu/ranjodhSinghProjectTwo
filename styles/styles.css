@@ -1,0 +1,48 @@
+html{
+    font-family: 'Raleway',sans-serif ;
+    font-family: 'Lora', serif;
+}
+blockquote {
+    /* background: #f9f9f9;
+    border-left: 10px solid #ccc;
+    margin: 1.5em 10px; */
+    padding: 0.5em 10px;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+    color: #ccc;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+blockquote:after {
+    color: #ccc;
+    content: close-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+}
+blockquote p {
+    display: inline;
+}
+
+
+/****** style for the shopping bag and the counter ****/
+.shoppingBagCount .p1[data-count]:after{
+    position:absolute;
+    right:10%;
+    bottom:8%;
+    content: attr(data-count);
+    font-size:40%;
+    padding:.3rem;
+    border-radius:50%;
+    line-height:1rem;
+    color: white;
+    background:#64A604;
+    text-align:center;
+    min-width: 1rem;
+    font-weight:bold;
+}
