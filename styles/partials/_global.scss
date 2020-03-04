@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0; 
+}
+
+html {
+    font-size: 62.5%; 
+}
+/* some of the font weight does not apply on the fonts in firefox, this body rules help in correction to font weight */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+h1,
+h2,
+h3,
+p,
+a,
+ul, li,
+img {
+    margin: 0;
+    padding: 0; 
+}
+
+.wrapper {
+    max-width: 1200px;
+    width: 70%;
+    margin: 0 auto; 
+}
+
+ul{
+    list-style-type: none;
+}
+img{
+    width:100%;
+    height:auto;
+    display:block;
+}
+
+h1,
+h2,
+h3,
+h4,
+a,
+button{
+    text-transform:uppercase;
+    font-family:$raleway;
+}
+p{
+    font-family:$lora;
+    font-weight:400;
+    font-size:1.2rem;
+    line-height:1.8rem;
+    letter-spacing: 0.3px;
+}
+
+a {
+    text-decoration: none;
+    color:$black;
+}
+a.current{
+    color:$mainGreen;
+}
+button:hover{
+    cursor:pointer;
+}

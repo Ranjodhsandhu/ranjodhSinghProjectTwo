@@ -1,0 +1,103 @@
+.deliciousLinks,
+.recentPostLinks,
+.subscribeNow{
+    margin:0 20px;
+    flex:1 1 30%;
+}
+.deliciousLinks h2{
+    font-size:2.8rem;
+    line-height: 3.4rem;
+    letter-spacing:1px;
+    color:$mainGreen;
+    margin-bottom:20px;
+}
+.recentPostLinks h3,
+.subscribeNow h3{
+    font-size:1.4rem;
+    line-height:2.4rem;
+    letter-spacing: 0.5px;
+    color:$white;
+    margin-bottom:30px;
+}
+
+.deliciousLinks,
+.recentPostLinks,
+.subscribeNow{
+    p{
+        margin:15px 0;
+        padding-bottom:10px;
+    }
+}
+.deliciousLinks,
+.recentPostLinks{
+    p{
+        border-bottom:1px solid darken(rgb(153, 153, 153),25%);
+        //rgba(153, 153, 153,0.25);
+    }
+}
+
+.deliciousLinks,
+.recentPostLinks{
+    p:nth-last-child(1){
+        border:none;
+    }
+}
+footer {
+    background-color:$blackTwo;
+    p{
+        color:$brownGrey;
+    }
+    .footerNavs{
+        padding:50px 0;
+        display:flex;
+        justify-content: space-between;
+    }
+    form{
+        display:flex;
+        button{
+            background-color:$mainGreen;
+            color:$white;
+            border:none;
+            padding:20px;
+            flex:1 1 10%;
+            font-size:2rem;
+        }
+        input[type="email"]{
+            background-color:rgba(153, 153, 153,0.5);//$brownGrey;
+            border:none;
+            padding:20px;
+            flex:1 1 80%;
+            color:$white;
+        }
+    }
+    ul{
+        flex:1 1 500px;
+        margin-top:40px;
+        padding-top:10px;
+        border-top:1px solid rgba(153, 153, 153,0.25);
+        display:flex;
+        flex-direction:row;
+        justify-content: flex-start;
+        li{
+            padding-right:20px;
+        }
+    }
+    .copyright{
+        background-color:$black;
+        text-align:center;
+        font-family:$lora;
+        div{
+            display:flex;
+            justify-content:flex-start;
+            padding:20px 20px;
+        }
+        a{
+            color:$mainGreen;
+        }
+    }
+}
+
+.footerSocialLinks a{
+    color:$white;
+    font-size:1.8rem;
+}

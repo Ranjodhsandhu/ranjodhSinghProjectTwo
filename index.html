@@ -15,15 +15,15 @@
 </head>
 <body>
     <!-- start of the header -->
-    <header>
-        <div class="headerLogo logo">
-            <p>
-                delicious
-            </p>
-        </div>
-        <nav>
+    <header class="homeHeader">
+        <nav class="topBar">
+            <div class="headerLogo logo">
+                <h1>
+                    delicious
+                </h1>
+            </div>
             <ul>
-                <li><a href="#">home</a></li>
+                <li><a href="#" class="current">home</a></li>
                 <li><a href="#">about</a></li>
                 <li><a href="#">recipes</a></li>
                 <li><a href="#">nutrition</a></li>
@@ -32,8 +32,8 @@
                 <li><a href="#">contact</a></li>
                 <li class="shoppingBagCount">
                     <a href="#">
-                        <span class="p1 fa-stack fa-2x has-badge" data-count="2">
-                            <i class="fas fa-shopping-bag fa-stack-1x xfa-inverse"></i>
+                        <span>
+                            <i class="fas fa-shopping-bag"></i>
                         </span>
                     </div>
                 </a></li>
@@ -65,31 +65,47 @@
             <div>
                 <ul>
                     <li>
+                        <span><i class="fas fa-lemon"></i></span>
                         <h3>vegetarian</h3>
                         <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon
                         azuki bean</p>
                     </li>
                     <li>
+                        <span>
+                            <i class="fas fa-coffee"></i>
+                        </span>
                         <h3>desserts</h3>
                         <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon
                         azuki bean</p>
                     </li>
                     <li>
+                        <span>
+                            <i class="fas fa-leaf"></i>
+                        </span>
                         <h3>salads</h3>
                         <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon
                         azuki bean</p>
                     </li>
                     <li>
+                        <span>
+                            <i class="fas fa-utensils"></i>
+                        </span>
                         <h3>appetizers</h3>
                         <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon
                         azuki bean</p>
                     </li>
                     <li>
+                        <span>
+                            <i class="fas fa-glass-martini"></i>
+                        </span>
                         <h3>drinks</h3>
                         <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon
                         azuki bean</p>
                     </li>
                     <li>
+                        <span>
+                            <i class="fas fa-utensil-spoon"></i>
+                        </span>
                         <h3>side dishes</h3>
                         <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon
                         azuki bean</p>
@@ -110,7 +126,7 @@
                 dandelion okra wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.
             </p>
         </section>
-        <section>
+        <section class="gallery">
             <ul>
                 <li><img src="./delicious-assets/home-5.jpeg" alt="delicious food in white plate"></li>
                 <li><img src="./delicious-assets/home-6.jpeg" alt="fully stuffed burger with green toppings"></li>
@@ -120,7 +136,7 @@
                 <li><img src="./delicious-assets/home-10.jpeg" alt="yummy white paste with green toppings"></li>
             </ul>
         </section>
-        <section>
+        <section class="quotes">
             <h2>
                 hungry clients
             </h2>
@@ -133,72 +149,74 @@
             </div>
             <div>
                 <p>
-                    <span class="leftArrow"></span>
-                    <span class="rightArrow"></span>
+                    <span class="leftAngle"><i class="fas fa-angle-left"></i></span>
+                    <span class="rightArrow">
+                        <i class="fas fa-angle-right"></i>
+                    </span>
                 </p>
             </div>
         </section>
     </main>
     <!-- end of main -->
     <!-- start of footer -->
-    <footer>
-        <div>
-            <div class="footerLogo logo">
-                <h2>
-                    delicious
-                </h2>
+    <footer class="homeFooter">
+        <div class="wrapper footerNavs">
+            <div class="deliciousLinks">
+                <div class="footerLogo logo">
+                    <h2>
+                        delicious
+                    </h2>
+                </div>
+                <p>
+                    Soko radicchio bunya nuts gram dulse silver beet parsnip napa cabbage lotus root sea lettuce brussels sprout cabbage.
+                </p>
+                <p>
+                    <span>A delicious restraunt</span>
+                    Toronto, Ontario
+                </p>
+                <p>
+                    yum@food.com
+                </p>
+                <p>
+                    +1 234 567 8910
+                </p>
             </div>
-            <p>
-                Soko radicchio bunya nuts gram dulse silver beet parsnip napa cabbage lotus root sea lettuce brussels sprout cabbage.
-            </p>
-            <p>
-                <span>A delicious restraunt</span>
-                Toronto, Ontario
-            </p>
-            <p>
-                yum@food.com
-            </p>
-            <p>
-                +1 234 567 8910
-            </p>
-        </div>
-        <div>
-            <h3>
-                recent posts
-            </h3>
-            <p>
-                Beetroot water spinach okra water
-            </p>
-            <p>
-                Chestnut ricebean pea catsear courgette
-            </p>
-            <p>
-                Summer purslane. Water spinach arugula pea
-            </p>
-            <p>
-                Tatsoi aubergine spring onion bush
-            </p>
-            <p>
-                Tomato kale radicchio turnip chicory
-            </p>
-            <p>
-                salsify pea sprouts fava bean
-            </p>
-        </div>
-        <div>
-            <h3>
-                subscribe now
-            </h3>
-            <p>
-                Get all of our recipes immediately in your inbox!
-            </p>
-            <form action="#">
-                <label for="email" class="visuallyHidden">Email</label>
-                <input type="email" name="email" id="email" placeholder="Enter your email" required>
-                <button type="submit"> --> </button>
-            </form>
-            <div class="footerSocialLinks">
-                <ul>
+            <div class="recentPostLinks">
+                <h3>
+                    recent posts
+                </h3>
+                <p>
+                    Beetroot water spinach okra water
+                </p>
+                <p>
+                    Chestnut ricebean pea catsear courgette
+                </p>
+                <p>
+                    Summer purslane. Water spinach arugula pea
+                </p>
+                <p>
+                    Tatsoi aubergine spring onion bush
+                </p>
+                <p>
+                    Tomato kale radicchio turnip chicory
+                </p>
+                <p>
+                    salsify pea sprouts fava bean
+                </p>
+            </div>
+            <div class="subscribeNow">
+                <h3>
+                    subscribe now
+                </h3>
+                <p>
+                    Get all of our recipes immediately in your inbox!
+                </p>
+                <form action="#">
+                    <label for="email" class="visuallyHidden">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter your email" required>
+                    <button type="submit"> <i class="fas fa-long-arrow-alt-right"></i> </button>
+                </form>
+                <ul class="footerSocialLinks">
                     <li>
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                     </li>
@@ -212,9 +230,11 @@
             </div>
         </div>
         <div class="copyright">
-            <p>
-                Copyrights &copy; 2015 by <a href="#">Polar</a> All Rights Reserved 
-            </p>
+            <div class="wrapper">
+                <p>
+                    Copyrights &copy; 2015 by <a href="#">Polar</a> All Rights Reserved 
+                </p>
+            </div>
         </div>
     </footer>
     <!-- end of footer -->

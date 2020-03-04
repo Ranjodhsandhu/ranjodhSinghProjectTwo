@@ -1,0 +1,48 @@
+    h1{
+        font-size:3.6rem;
+        line-height: 2rem;
+        letter-spacing:1.1px;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    header.homeHeader{
+            background-image:url("../delicious-assets/home-1.jpeg");
+        }
+    header.blogHeader{
+            background-image:url("../delicious-assets/blog-1.jpeg");
+        }
+    header.contactHeader{
+            background-image:url("../delicious-assets/contact-1.jpeg");
+        }
+    header{
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-color:$brownGrey; ;
+        background-position: center;
+        background-size:cover;
+        height:100vh;
+        width:100vw;
+        color:$black;
+    }
+    .topBar{
+        padding:30px 20px 20px 20px;
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        align-content: center;
+        flex-wrap:wrap;
+    }
+    .headerLogo{
+        flex:1 1 40%;
+    }
+    header ul{
+        flex:1 1 500px;
+        display:flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    a{
+        font-size:1.4rem;
+    }
