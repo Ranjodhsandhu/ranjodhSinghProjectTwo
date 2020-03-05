@@ -27,15 +27,15 @@
                 <li><a href="#">about</a></li>
                 <li><a href="#">recipes</a></li>
                 <li><a href="#">nutrition</a></li>
-                <li><a href="#">blog</a></li>
+                <li><a href="./blog.html">blog</a></li>
                 <li><a href="#">shop</a></li>
-                <li><a href="#">contact</a></li>
-                <li class="shoppingBagCount">
+                <li><a href="./contact.html">contact</a></li>
+                <li class="shoppingBag">
                     <a href="#">
-                        <span>
+                        <span class="ShoppingBagCount">
                             <i class="fas fa-shopping-bag"></i>
+                            <span class="numberCircle"><span>2</span></span>
                         </span>
-                        
                     </div>
                 </a></li>
                 <li><a href="#"><i class="fas fa-search"></i></a></li>
@@ -64,52 +64,68 @@
                 <img src="./delicious-assets/home-3.jpeg" alt="wrapped bread with lemon salad">
             </div>
             <div class="recipeDescriptions">
-                <ul>
-                    <li>
-                        <span><i class="fas fa-lemon"></i></span>
-                        <h3>vegetarian</h3>
-                        <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon
-                        azuki bean</p>
-                    </li>
+                <ul class="descriptionsList">
                     <li>
                         <span>
-                            <i class="fas fa-coffee"></i>
+                            <i class="fas fa-lemon"></i>
                         </span>
-                        <h3>desserts</h3>
-                        <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon
-                        azuki bean</p>
-                    </li>
-                    <li>
-                        <span>
-                            <i class="fas fa-leaf"></i>
-                        </span>
-                        <h3>salads</h3>
-                        <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon
-                        azuki bean</p>
+                        <div>
+                            <h3>vegetarian</h3>
+                            <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon
+                            azuki bean</p>
+                        </div>
                     </li>
                     <li>
                         <span>
                             <i class="fas fa-utensils"></i>
                         </span>
-                        <h3>appetizers</h3>
-                        <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon
-                        azuki bean</p>
+                        <div>
+                            <h3>appetizers</h3>
+                            <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo
+                                melon
+                                azuki bean</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span>
+                            <i class="fas fa-coffee"></i>
+                        </span>
+                        <div>
+                            <h3>desserts</h3>
+                            <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon
+                            azuki bean</p>
+                        </div>
                     </li>
                     <li>
                         <span>
                             <i class="fas fa-glass-martini"></i>
                         </span>
-                        <h3>drinks</h3>
-                        <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon
-                        azuki bean</p>
+                        <div>
+                            <h3>drinks</h3>
+                            <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo
+                                melon
+                                azuki bean</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span>
+                            <i class="fas fa-leaf"></i>
+                        </span>
+                        <div>
+                            <h3>salads</h3>
+                            <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon
+                            azuki bean</p>
+                        </div>
                     </li>
                     <li>
                         <span>
                             <i class="fas fa-utensil-spoon"></i>
                         </span>
-                        <h3>side dishes</h3>
-                        <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon
-                        azuki bean</p>
+                        <div>
+                            <h3>side dishes</h3>
+                            <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon
+                            azuki bean</p>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -142,23 +158,33 @@
             </ul>
         </section>
         <section class="quotes">
-            <h2>
-                hungry clients
-            </h2>
-            <div>
-                <blockquote>
-                    Beetroot water spinach okra water chestnut ricebean pea catsear courgette summer purslane. Water spinach arugula pea
-                    tatsoi aubergine spring onion bush tomato kale radicchio turnip chicory salsify pea sprouts fava bean. Dandelion
-                    zucchini burdock yarrow chickpea dandelion
-                </blockquote>
-            </div>
-            <div>
-                <p>
-                    <span class="leftAngle"><i class="fas fa-angle-left"></i></span>
-                    <span class="rightArrow">
-                        <i class="fas fa-angle-right"></i>
+            <div class="wrapper">
+                <h2>
+                    hungry clients
+                </h2>
+                <div class="clientQuote">
+                    <span class="leftQuote">
+                        <i class="fas fa-quote-left"></i>
                     </span>
-                </p>
+                    <blockquote>
+                        Beetroot water spinach okra water chestnut ricebean pea catsear courgette summer purslane. Water spinach arugula pea
+                        tatsoi aubergine spring onion bush tomato kale radicchio turnip chicory salsify pea sprouts fava bean. Dandelion
+                        zucchini burdock yarrow chickpea dandelion
+                    </blockquote>
+                    <span class="rightQuote">
+                        <i class="fas fa-quote-right"></i>
+                    </span>
+                </div>
+                <div class="leftRightSigns">
+                    <p>
+                        <span class="leftAngle">
+                            <i class="fas fa-angle-left"></i>
+                        </span>
+                        <span class="rightArrow">
+                            <i class="fas fa-angle-right"></i>
+                        </span>
+                    </p>
+                </div>
             </div>
         </section>
     </main>

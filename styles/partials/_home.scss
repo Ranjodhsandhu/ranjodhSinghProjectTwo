@@ -3,8 +3,6 @@ main{
         font-size:2.4rem;
         margin:50px 0;
         padding:30px 0;
-        // border-bottom:5px solid $mainGreen;
-        // border-radius:5px;
         position:relative;
     
         &::after{
@@ -17,7 +15,15 @@ main{
             left:50%;
             transform:translateX(-50%);
             margin:0 auto;            
-            // z-index:-1;
+        }
+    }
+}
+
+    .recipes,
+    .restrauntPicture{
+        p{
+            font-size:1.1rem;
+            color:$brownGrey;
         }
     }
     .recipes{
@@ -47,7 +53,46 @@ main{
             }
 
         }
+        .mainImageOne,
+        .mainImageTwo{
+            img{
+                height:100%;
+                display:block;
+            }
+        }
 
+        .recipeDescriptions{
+            margin:auto;
+            height:100%;
+            background-color:$white;
+
+            .descriptionsList{
+                padding:100px 50px;
+                display:flex;
+                justify-content: space-between;
+                align-items:flex-start;
+                flex-wrap:wrap;
+                
+                li{ 
+                    display:flex;
+                    justify-content: space-between;
+                    margin-bottom:30px;
+                    div{
+                        padding:0 10px 10px 10px;
+                    }
+                }
+                p{
+                    width:250px;
+                }
+                span{
+                    font-size:2.8rem;
+                }
+                h3{
+                    font-size:1.4rem;
+                    padding-bottom:10px;
+                }               
+            }
+        }
     }
 
     .restrauntPicture{
@@ -72,6 +117,81 @@ main{
             width:750px;
         }
     }
+    .quotes{
+        background-color:$lightGreen;
+        >div{
+            padding:50px 0 100px 0;
+            display:flex;
+            flex-direction:column;
+            align-items: center;
+            text-align:center;
+            .clientQuote{
+                margin:auto;
+                display:flex;
+                position:relative;
+                blockquote{
+                    width:80%;
+                }
+                span{
+                    color:$white;
+                    font-size:4rem;
+                    position:absolute;
+                }
+                .leftQuote{
+                    top:-10px;
+                    left:0px;
+                }
+                .rightQuote{
+                    right:0;
+                    bottom:40px;
+                }
+                
+            }
+            blockquote{
+                font-family:$lora;
+                font-style:italic;
+                font-size:2rem;
+                line-height: 2.6rem;;
+            }
+            blockquote{
+                margin:0 auto;
+                padding-bottom: 50px;
+                color:$black;
+            }
+
+            ///This code was used to use the inbuilt quotes around the block quote but looking at the design, it seems that the signs are from fontawesome.com
+            // blockquote::before{
+            //     font-family:$raleway;
+            //     color:$white;
+            //     content:open-quote;
+            //     font-size:4em;
+            //     line-height:0.1em;
+            //     margin-right:0.25em;
+            //     vertical-align:-0.4em
+            // }
+            // blockquote::after{
+            //     font-family:$raleway;   
+            //     color:$white;
+            //     content:close-quote;
+            //     font-size:4em;
+            //     line-height:0.1em;
+            //     margin-right:0.25em;
+            //     vertical-align:-0.4em
+            // }
+            .leftRightSigns{
+                p{
+                    color:$white;
+                    font-size:3rem;
+                    span{
+                        padding:0 20px;
+                    }
+                    .leftAngle{
+                        color:darken($white,3);
+                    }
+                }
+            }
+        }
+    }
 
     .gallery{
         ul{
@@ -83,24 +203,3 @@ main{
             }
         }
     }
-}
-
-
-
-
-
-
-
-
-.quotes{
-    background-color:$lightGreen;
-}
-
-blockquote{padding:0.5em 10px;quotes:"\201C""\201D""\2018""\2019"}
-
-blockquote:before{color:#ccc;content:open-quote;font-size:4em;line-height:0.1em;margin-right:0.25em;vertical-align:-0.4em}
-
-blockquote:after{color:#ccc;content:close-quote;font-size:4em;line-height:0.1em;margin-right:0.25em;vertical-align:-0.4em}
-
-blockquote p{display:inline}
-
