@@ -1,21 +1,10 @@
-    header.homeHeader{
-            background-image:url("../delicious-assets/home-1.jpeg");
-        }
-    header.blogHeader{
-            background-image:url("../delicious-assets/blog-1.jpeg");
-        }
-    header.contactHeader{
-            background-image:url("../delicious-assets/contact-1.jpeg");
-        }
+
     header{
         background-attachment: fixed;
         background-repeat: no-repeat;
         background-color:$brownGrey; ;
-        background-position: center;
-        background-size:cover;
-        height:100vh;
-        width:100vw;
         color:$black;
+        width: 100vw;
     
         h1{
             font-size:3.6rem;
@@ -42,23 +31,23 @@
                 li.shoppingBag{
                     span{
                         position:relative;
-                        .numberCircle {
+                        .countCircle {
                             display:inline-block;
                             line-height:1px;
                             border-radius:50%;
-                            border:1px solid green;;
-                            background-color:green;
+                            border:1px solid $mainGreen;
+                            background-color:$mainGreen;
                             font-size:10px;
                             position:absolute;
                             right:-6px;
                             bottom:-6px;
                         }
 
-                        .numberCircle span {
+                        .countCircle span {
                             display:inline-block;
                             padding-top:50%;
                             padding-bottom:50%;
-                            color:white;
+                            color:$white;
                             margin-left:3px;
                             margin-right:3px;
                         }
@@ -79,3 +68,20 @@
             flex:1 1 40%;
         }
     }
+    header.homeHeader{
+            background-image:url("../delicious-assets/home-1.jpeg");
+            background-position: center;
+            background-size:cover;
+            height:100vh;
+        }   
+    header.blogHeader,
+    header.contactHeader{        
+        background-size: contain;
+        height: 55vh;
+    }
+    header.blogHeader{
+            background-image:url("../delicious-assets/blog-1.jpeg");
+        }
+    header.contactHeader{
+            background-image:url("../delicious-assets/contact-1.jpeg");
+        }
