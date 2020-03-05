@@ -1,0 +1,106 @@
+main{
+    h2{
+        font-size:2.4rem;
+        margin:50px 0;
+        padding:30px 0;
+        // border-bottom:5px solid $mainGreen;
+        // border-radius:5px;
+        position:relative;
+    
+        &::after{
+            content:" ";
+            border-bottom:5px solid $mainGreen;
+            width:80px;
+            display:block;
+            position:absolute;
+            bottom:0;
+            left:50%;
+            transform:translateX(-50%);
+            margin:0 auto;            
+            // z-index:-1;
+        }
+    }
+    .recipes{
+        display:flex;
+        justify-content:center;
+        flex-wrap:wrap;
+        > div{
+            flex:1 1 50%;
+        }
+        .mostRecent{
+            text-align:center;
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            margin:auto;
+            p{
+                width:550px;
+            }
+            button{
+                margin-top:50px;
+                background-color:$mainGreen;
+                color:$white;
+                border:none;
+                padding:15px 40px;
+                flex:1 1 10%;
+                font-size:1.6rem;
+            }
+
+        }
+
+    }
+
+    .restrauntPicture{
+        margin:200px 0;
+        text-align:center;
+        display:flex;
+        flex-direction:column;
+        align-items: center;
+        
+        .stackedImages{
+            position:relative;
+        }
+        .watermarkImage{
+            width:200px;
+            height:200px;
+            position:absolute;
+            top:-50px;
+            right:-50px;
+            transform:translate(50px,-50px);
+        }
+        p{
+            width:750px;
+        }
+    }
+
+    .gallery{
+        ul{
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            *{
+                flex:1 1 30%;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+.quotes{
+    background-color:$lightGreen;
+}
+
+blockquote{padding:0.5em 10px;quotes:"\201C""\201D""\2018""\2019"}
+
+blockquote:before{color:#ccc;content:open-quote;font-size:4em;line-height:0.1em;margin-right:0.25em;vertical-align:-0.4em}
+
+blockquote:after{color:#ccc;content:close-quote;font-size:4em;line-height:0.1em;margin-right:0.25em;vertical-align:-0.4em}
+
+blockquote p{display:inline}
+
