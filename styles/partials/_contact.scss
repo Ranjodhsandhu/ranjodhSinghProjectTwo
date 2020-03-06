@@ -12,3 +12,34 @@
         }
     }
 }
+.contactForm{
+    margin:50px 0;
+    padding-right:5%;
+    form{
+        padding:50px 0;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:50px 50px 150px 50px; 
+        grid-gap:30px;
+        input{
+            background-color:$white;
+            border:none;
+            padding:10px;
+        }
+        input[placeholder="Subject"],
+        input[placeholder="Message"]{
+            grid-column-start: 1;
+            grid-column-end:span 2;
+        }
+        input[placeholder="Message"]{
+            text-align:top;
+        }
+        button{
+            width:50%;
+            border:none;
+            background:none;
+            color:$mainGreen;
+            text-align:left;
+        }
+    }
+}
