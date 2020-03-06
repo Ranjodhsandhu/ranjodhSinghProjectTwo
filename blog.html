@@ -104,10 +104,10 @@
                 </div>
             </section>
             <section class="blogAuthor">
-                <div>
+                <div class="authorImage">
                     <img src="./delicious-assets/blog-2.jpeg" alt="author of the blog posing for pic">
                 </div>
-                <div>
+                <div class="authorInfo"> 
                     <h3>
                         sally lucas
                     </h3>
@@ -126,33 +126,35 @@
                         <div>
                             <img src="./delicious-assets/blog-3.jpeg" alt="serving the perfect baked cake on plate">
                         </div>
-                        <p>how to bake the perfect cake</p>
+                        <p><a href="">how to bake the perfect cake</a></p>
                         <p><time datetime="2018-07-11">July 11, 2018</time> | by <span>Admin</span> | in <span>Recipes</span> </p>
                     </div>
                     <div>
                         <div>
                             <img src="./delicious-assets/blog-4.jpeg" alt="floral delicious cupcakes">
                         </div>
-                        <p>floral cupcakes</p>
+                        <p><a href="">floral cupcakes</a></p>
                         <p><time datetime="2018-07-19">July 19, 2018</time> | by <span>Admin</span> | in <span>Recipes</span> </p>
                     </div>
                     <div>
                         <div>
                             <img src="./delicious-assets/blog-5.jpeg" alt="single serves with the green toppings">
                         </div>
-                        <p>single post with image</p>
+                        <p><a href="">single post with image</a></p>
                         <p><time datetime="2018-07-22">July 22, 2018</time> | by <span>Admin</span> | in <span>Recipes</span> </p>
                     </div>
                 </div>
             </section>
             <section class="comments">
                 <h3><span>02</span> comments</h3>
-                <div class="comment1">
+                <div class="comment comment1">
                     <div>
                         <img src="./delicious-assets/blog-6.jpeg" alt="commentator lady with large ear rings">
                     </div>
+                    
                     <div>
-                        <p class="commentatorName">
+                        <span class="tip tip-left"></span>
+                        <p class="commentorName">
                             <span>Lucatony Avaro</span> - Web Developer
                         </p>
                         <p>
@@ -163,12 +165,13 @@
                         </p>
                     </div>
                 </div>
-                <div class="comment2">
+                <div class="comment comment2">
                     <div>
                         <img src="./delicious-assets/blog-7.jpeg" alt="commentator lady with brown hair and black hat">
                     </div>
                     <div>
-                        <p class="commentatorName">
+                        <span class="tip tip-left"></span>
+                        <p class="commentorName">
                             <span>Brian Hudson</span> - Web Developer
                         </p>
                         <p>
@@ -180,7 +183,7 @@
                     </div>
                 </div>
             </section>
-            <section>
+            <section class="commentForm">
                 <h3>leave a comment</h3>
                 <p>
                     Your email address will not be published. Required fields are marked *
@@ -192,8 +195,10 @@
                     <input type="email" name="email" id="email" placeholder="Email">
                     <label for="website" class="visuallyHidden">Your website</label>
                     <input type="text" name="website" id="website" placeholder="Your Website">
-                    <label for="comment" class="visuallyHidden">Comment</label>
-                    <input type="text" rows="10" name="comment" id="comment" Placeholder="Comment">
+                    <label for="commentArea" class="visuallyHidden">Comment</label>
+                    <input type="text" name="commentArea" id="commentArea" cols="40" rows="5" placeholder="Comment">
+
+                    <!-- <textarea name="commentArea" id="commentArea" cols="40" rows="5" placeholder="Comment"></textarea> -->
                     <button type="submit">Submit Comment</button>
                 </form>
             </section>
