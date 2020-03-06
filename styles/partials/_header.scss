@@ -2,9 +2,8 @@
     header{
         background-attachment: fixed;
         background-repeat: no-repeat;
-        background-color:$brownGrey; ;
+        background-color:$brownGrey;
         color:$black;
-        width: 100vw;
     
         h1{
             font-size:3.6rem;
@@ -69,19 +68,21 @@
         }
     }
     header.homeHeader{
-            background-image:url("../delicious-assets/home-1.jpeg");
-            background-position: center;
-            background-size:cover;
-            height:100vh;
-        }   
+        background-image:url("../delicious-assets/home-1.jpeg");
+        background-size:cover;
+        background-position: center;
+        height:100vh;
+    }   
     header.blogHeader,
     header.contactHeader{        
-        background-size: contain;
+        background-size: cover;
+        background-position: center;
+        background-attachment: initial;
         height: 55vh;
     }
     header.blogHeader{
-            background-image:url("../delicious-assets/blog-1.jpeg");
-        }
+        background-image:url("../delicious-assets/blog-1.jpeg");
+    }
     header.contactHeader{
-            background-image:url("../delicious-assets/contact-1.jpeg");
-        }
+        background-image:url("../delicious-assets/contact-1.jpeg");
+    }

@@ -1,0 +1,14 @@
+.contactMain{
+    display:grid;
+    grid-template-columns: 60% 40% ;
+    div{
+        border:1px solid red;
+    }
+    aside{
+        background-color:$white;
+        padding:100px 100px 50px 20px ;
+        .asideWrapper{
+            max-width:250px;
+        }
+    }
+}

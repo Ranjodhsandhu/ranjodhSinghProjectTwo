@@ -1,0 +1,79 @@
+.blogMain{
+    padding:150px 0;
+}
+
+.sectionOne{
+    h2{
+        font-size:3rem;
+    }
+    p:not(.postDate){
+        padding:10px 0;
+        color:$brownGrey;
+        letter-spacing:0.05rem;
+    }
+    h2 + p{
+        font-family:$raleway;
+        font-size:1rem;
+        letter-spacing: 0.03rem;
+        padding-bottom:3%;
+    }
+    .blogPostTags{
+        margin:10px 0;
+        border-top:1px solid $brownGrey;
+    }
+    .blogPostShare{
+        border-bottom:1px solid $brownGrey;
+    }
+    .blogPostTags,
+    .blogPostShare{
+        span{
+            display:inline-block;
+            text-transform: uppercase;
+            color:$black;
+            font-family:$raleway;
+        }
+    }
+    .blogPostTags{
+        > a{
+            text-transform:none;
+            font-family: $lora;
+            color:$brownGrey;
+        }
+    }
+    .blogPostShare{
+        display:flex;
+    }
+
+    .blogSocialLinks{
+        li{
+            display:inline-block;
+            padding:10px;
+            a{
+                color:$brownGrey;
+                font-size:1.5rem;
+            }
+        }
+    }
+}
+
+.blogAuthor{
+    margin-top:50px;
+    display:flex;
+}
+
+.relatedPosts{
+    div{
+        display:flex;
+    }
+}
+.comments{
+    display:flex;
+    flex-direction:column;
+    .comment1,
+    .comment2{
+        div:first-child{
+            height:100px;
+            width:100px;
+        }
+    }
+}
