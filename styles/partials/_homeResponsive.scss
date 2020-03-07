@@ -37,6 +37,9 @@
     }
 }
 @media(max-width:962px){
+    header.homeHeader{
+        background-attachment: initial;
+    }   
     header .topBar ul{
         display:none;   
     }
