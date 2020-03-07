@@ -88,13 +88,12 @@
     }
 }
 .relatedPosts{
-    & > div{
+    > div{
         display:flex;
-        min-width:300px;
         flex-wrap:wrap;
-        div{
+        .post{
             padding-right:20px;
-            width:calc(100%/3);
+            flex: 1 0 calc(100%/3);
             display:flex;  
             flex-direction:column;
             p:nth-of-type(1){
@@ -114,6 +113,9 @@
                     font-family:$raleway;
                     color:$black;
                 }
+            }
+            .post3Image img{
+                padding-right:20px;
             }
         }
         div:last-child{
@@ -177,18 +179,23 @@
         padding:20px 0;
         display:grid;
         grid-template-columns:1fr 1fr 1fr;//30% 30% 30%;
-        grid-template-rows:40px 150px 40px;
+        grid-template-rows:40px 150px;
         grid-gap:20px;
+        input{
+            border:none;
+            border:2px solid $white; 
+            padding:5% 5%;
+        }
         input[placeholder="Comment"]{
             grid-column-start: 1;
             grid-column-end:span 3;
         }
         button{
-            width:50%;
+            width:fit-content;
             background-color:$mainGreen;
             color:$white;
             border:none;
-            padding:15px 10px;
+            padding:5% 10%;
             flex:1 1 10%;
             font-size:1.4rem;
         }
