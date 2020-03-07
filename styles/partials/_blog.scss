@@ -1,5 +1,7 @@
 .blogMain{
-    padding:150px 0;
+    padding-top:150px;
+    padding-bottom:50px;
+    transition:all 0.3s linear;
     section{
         margin-bottom:50px;
     }
@@ -66,7 +68,11 @@
     margin-top:50px;
     display:flex;
     .authorImage{
+        transition:all 0.3s linear;
         flex:1 1 10%;
+        img{
+            transition:all 0.3s linear;
+        }
     }
     .authorInfo{
         flex:1 1 80%;
@@ -118,7 +124,7 @@
                 padding-right:20px;
             }
         }
-        div:last-child{
+        .post3{
             padding-right:0;
         }
     }
@@ -129,13 +135,11 @@
     .comment{
         display:flex;
         margin-bottom:20px;
-        
         .commentorName{
             span{
                 font-family:$raleway;
             }
         }
-        
         div:first-child{
             flex:1 1 5%;
         }
@@ -163,10 +167,12 @@
                 border-left-color: transparent;
                 border-bottom-color: transparent;  
             }
+            .tip-top {
+                border:none;
+            }
         }
     }
-    .comment1,
-    .comment2{
+    .comment{
         div:first-child{
             height:100px;
             width:100px;
@@ -177,27 +183,36 @@
 .commentForm{
     form{
         padding:20px 0;
-        display:grid;
-        grid-template-columns:1fr 1fr 1fr;//30% 30% 30%;
-        grid-template-rows:40px 150px;
-        grid-gap:20px;
+        display:flex;
+        flex-wrap:wrap;
         input{
-            border:none;
             border:2px solid $white; 
-            padding:5% 5%;
+            padding:2% 2%;
+            margin:10px 0;
         }
+        input[name="name"],
+        input[name="email"]{
+            margin-right:20px;
+        }
+        input[name="name"],
+        input[name="email"],
+        input[name="website"]{
+            flex:1 1 calc(100%/3 - 40px);
+        }
+
         input[placeholder="Comment"]{
-            grid-column-start: 1;
-            grid-column-end:span 3;
+            flex:1 1 100%;
+            height:150px;
         }
         button{
             width:fit-content;
             background-color:$mainGreen;
             color:$white;
             border:none;
-            padding:5% 10%;
-            flex:1 1 10%;
+            padding:1% 2%;
+            width:calc(((100%/3) - 20px)/2);
             font-size:1.4rem;
+            transition:all 0.3s linear;
         }
     }
 }
