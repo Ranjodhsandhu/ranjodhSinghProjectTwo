@@ -55,13 +55,17 @@
 @media(max-width:750px){
     .recipes .mostRecent{
         p{
-            width:450px;
+            width:100%;
+            padding:0 10%;
         }
     }
     .recipes{
+        & > div:nth-of-type(2),
+        & > div:nth-of-type(3){
+            flex:1 1 100%;
+        }
         & > div:nth-of-type(3){
             order:1;
-            flex:1 1 100%;
         }
     }
     .gallery{
@@ -79,7 +83,8 @@
             right:-25px;
         }
         p{
-            width:450px;
+            width:100%;
+            padding:0 10%;
         }
     }
     .stackedImages{
@@ -87,6 +92,60 @@
     }
 }
 @media(max-width:675px){
-    
+    .recipes{
+        .recipeDescriptions{
+            .descriptionsList{
+                flex-direction: column;
+                justify-content:center;
+                p{
+                    width:100%;
+                }
+            }
+        }
+    }
+    .quotes{
+        div .clientQuote{
+            blockquote{
+                width:70%;
+            }
+            span{
+                font-size:3rem;
+            }
+        }
+    }
 }
-
+@media(max-width:450px){
+    .restrauntPicture{
+        .watermarkImage{
+            width:100px;
+            height:100px;
+            top:0px;
+            left:50%;
+            transform:translate(-50%,-50%);
+        }
+    }
+    .stackedImages{
+        width:100%;
+    }
+    .gallery{
+        ul{
+            li{
+                flex:1 1 100%;
+            }
+        }
+    }
+    footer{
+        .deliciousLinks, 
+        .recentPostLinks,
+        .subscribeNow {
+            flex: 1 1 100%;
+            text-align:left;
+        }
+        .subscribeNow ul {
+            justify-content: left;
+        }
+    }
+    .restrauntPicture {
+        margin: 30% auto 20% auto;
+    }
+}
