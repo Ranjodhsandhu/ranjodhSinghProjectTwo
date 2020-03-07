@@ -1,3 +1,7 @@
+.homeWrapper{
+    max-width:1500px;
+    margin:0 auto;
+}
 main.homeMain{
     h2{
         font-size:2.4rem;
@@ -30,7 +34,8 @@ main.homeMain{
         display:flex;
         justify-content:center;
         flex-wrap:wrap;
-        > div{
+        & > div{
+            transition:all 0.3s linear;
             flex:1 1 50%;
         }
         .mostRecent{
@@ -40,6 +45,7 @@ main.homeMain{
             align-items:center;
             margin:auto;
             p{
+                padding:0 10px;
                 width:550px;
             }
             button{
@@ -76,9 +82,9 @@ main.homeMain{
                 li{ 
                     display:flex;
                     justify-content: space-between;
-                    margin-bottom:30px;
+                    margin-bottom:6%;
                     div{
-                        padding:0 10px 10px 10px;
+                        padding:0 0 10px 5px;
                     }
                 }
                 p{
@@ -101,7 +107,7 @@ main.homeMain{
         display:flex;
         flex-direction:column;
         align-items: center;
-        
+        transition:all 0.3s linear;
         .stackedImages{
             position:relative;
         }
@@ -198,8 +204,9 @@ main.homeMain{
             display:flex;
             justify-content:center;
             flex-wrap:wrap;
-            *{
+            li{
                 flex:1 1 30%;
+                transition:all 0.3s linear;
             }
         }
     }

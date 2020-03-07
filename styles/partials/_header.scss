@@ -1,88 +1,87 @@
 
-    header{
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        background-color:$brownGrey;
-        color:$black;
+header{
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+    background-color:$brownGrey;
+    color:$black;
     
-        h1{
-            font-size:3.6rem;
-            line-height: 3.8rem;
-            letter-spacing:1.1px;
-            font-weight: 700;
-            margin: 0;
+
+    h1{
+        font-size:3.6rem;
+        line-height: 3.8rem;
+        letter-spacing:1.1px;
+        font-weight: 700;
+        margin: 0;
+    }
+}
+.topBar{
+    padding:2%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    flex-wrap:wrap;
+    ul{
+        flex:1 1 60%;
+        display:flex;
+        justify-content: space-around;
+        align-items: center;
+        li{
+            flex-grow: 1;
         }
-        .topBar{
-            padding:2%;
-            display:flex;
-            justify-content: space-between;
-            align-items: center;
-            align-content: center;
-            flex-wrap:wrap;
-            ul{
-                flex:1 1 60%;
-                display:flex;
-                justify-content: space-around;
-                align-items: center;
-                li{
-                    flex-grow: 1;
+        li.shoppingBag{
+            span{
+                position:relative;
+                .countCircle {
+                    display:inline-block;
+                    line-height:1px;
+                    border-radius:50%;
+                    border:1px solid $mainGreen;
+                    background-color:$mainGreen;
+                    font-size:10px;
+                    position:absolute;
+                    right:-6px;
+                    bottom:-6px;
                 }
-                li.shoppingBag{
-                    span{
-                        position:relative;
-                        .countCircle {
-                            display:inline-block;
-                            line-height:1px;
-                            border-radius:50%;
-                            border:1px solid $mainGreen;
-                            background-color:$mainGreen;
-                            font-size:10px;
-                            position:absolute;
-                            right:-6px;
-                            bottom:-6px;
-                        }
-
-                        .countCircle span {
-                            display:inline-block;
-                            padding-top:50%;
-                            padding-bottom:50%;
-                            color:$white;
-                            margin-left:3px;
-                            margin-right:3px;
-                        }
-                    }
-
+                .countCircle span {
+                    display:inline-block;
+                    padding-top:50%;
+                    padding-bottom:50%;
+                    color:$white;
+                    margin-left:3px;
+                    margin-right:3px;
                 }
             }
-            .headerLogo{
-                flex:1 1 40%;
-            }
-            a{
-                font-size:1.4rem;
-                padding:10px;
-            }
+        }
+    }
+    .headerLogo{
+        flex:1 1 40%;
+    }
+    a{
+        font-size:1.4rem;
+        padding:10px;
+    }
+}
 
-        }
-        .headerLogo{
-            flex:1 1 40%;
-        }
-    }
-    header.homeHeader{
-        background-image:url("../delicious-assets/home-1.jpeg");
-        background-size:cover;
-        background-position: center;
-        height:100vh;
-    }   
-    header.blogHeader,
-    header.contactHeader{        
-        background-size: cover;
-        background-position: center;
-        background-attachment: initial;
-        height: 55vh;
-    }
-    header.blogHeader{
-        background-image:url("../delicious-assets/blog-1.jpeg");
-    }
-    header.contactHeader{
-        background-image:url("../delicious-assets/contact-1.jpeg");
-    }
+.topBar .threeBars{
+    display:none;
+    font-size:3rem;
+    font-weight:bold;
+}
+header.homeHeader{
+    background-image:url("../delicious-assets/home-1.jpeg");
+    height:100vh;
+}   
+header.blogHeader,
+header.contactHeader{        
+    background-attachment: initial;
+    height: 55vh;
+}
+header.blogHeader{
+    background-image:url("../delicious-assets/blog-1.jpeg");
+}
+header.contactHeader{
+    background-image:url("../delicious-assets/contact-1.jpeg");
+}

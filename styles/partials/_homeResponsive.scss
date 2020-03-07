@@ -1,0 +1,92 @@
+@media(max-width:1350px){
+    .recipes{
+        & > div:first-child{
+            flex:1 1 100%;
+            padding-bottom:50px;
+        }
+        & > div:last-child ul{
+            flex:1 1 100%;
+            width:70%;
+            margin:0 auto;
+        }
+        .descriptionsList{
+            padding-bottom:20px;
+        }
+    }
+}
+@media(max-width:1100px){
+    .restrauntPicture{
+        margin: 150px auto 100px auto;
+    }
+
+    .subscribeNow{
+        margin:30px auto;
+        flex:1 1 100%;
+        text-align:center;
+        ul{
+            justify-content:center;
+        }
+    }
+    .deliciousLinks,
+    .recentPostLinks{
+        flex:1 1 40%;
+    }
+    .recentPostLinks{
+        margin-right:0;
+        text-align:right;
+    }
+}
+@media(max-width:962px){
+    header .topBar ul{
+        display:none;   
+    }
+    .headerLogo{
+        text-align:center;
+    }
+    .topBar .threeBars{
+        display:inline-block;
+    }
+    .recipes{
+        & > div:last-child ul{
+            width:100%;
+        }
+    }
+}
+@media(max-width:750px){
+    .recipes .mostRecent{
+        p{
+            width:450px;
+        }
+    }
+    .recipes{
+        & > div:nth-of-type(3){
+            order:1;
+            flex:1 1 100%;
+        }
+    }
+    .gallery{
+        ul{
+            li{
+                flex:1 1 50%;
+            }
+        }
+    }
+    .restrauntPicture{
+        .watermarkImage{
+            width:150px;
+            height:150px;
+            top:-25px;
+            right:-25px;
+        }
+        p{
+            width:450px;
+        }
+    }
+    .stackedImages{
+        width:60%;
+    }
+}
+@media(max-width:675px){
+    
+}
+

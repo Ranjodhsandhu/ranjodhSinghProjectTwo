@@ -1,19 +1,11 @@
 .contactMain{
-    display:grid;
-    grid-template-columns: 60% 40% ;
-    div{
-        border:1px solid red;
-    }
-    aside{
-        background-color:$white;
-        padding:100px 100px 50px 20px ;
-        .asideWrapper{
-            max-width:250px;
-        }
-    }
+    display:flex;
+    flex-direction:row;
 }
+
 .contactForm{
-    margin:50px 0;
+    flex:1 1 50%;
+    margin:10% 0;
     padding-right:5%;
     form{
         padding:50px 0;
@@ -42,4 +34,27 @@
             text-align:left;
         }
     }
+}
+.contactMain {
+    aside{
+        flex:1 1 40%;
+        background-color:$white;
+        padding:15% 50% 10% 5% ;
+        .asideWrapper{
+            display:flex;
+            flex-direction:column;
+            div > p:nth-of-type(1){
+                padding-top:50px;
+            } 
+        }
+    }
+}
+
+.bottomImage{
+    background-image:url("../delicious-assets/contact-2.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: initial;
+    height: 55vh;
+    width:100%;
 }
