@@ -61,6 +61,13 @@
             div:last-child{
                 flex:1 1 100%;
                 margin-left:0;
+                .tip {
+                    width: 0px;
+                    height: 0px;
+                    position: absolute;
+                    background: transparent;
+                    border: 10px solid $white;
+                }
                 .tip-top {
                     top: -25px;
                     left: 10px;
@@ -83,6 +90,7 @@
                 flex:1 1 100%;
                 margin-right:0;
             }
+            
             button{
                 padding:3% 2%;
                 width:50%;

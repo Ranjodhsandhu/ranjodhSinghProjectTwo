@@ -22,11 +22,15 @@
             display:flex;
             flex-wrap:wrap;
             transition:all 0.3s linear;
-            input{
+            input,
+            textarea{
                 background-color:$white;
                 border:none;
                 padding:20px;
                 margin-bottom:20px;
+            }
+            textarea{
+                resize:none;
             }
             input[name="name"]{
                 margin-right:20px;
@@ -36,11 +40,10 @@
                 flex:1 1 40%;
             }
             input[placeholder="Subject"],
-            input[placeholder="Message"]{
+            textarea[placeholder="Message"]{
                 flex:1 1 100%;
             }
-            input[placeholder="Message"]{
-                text-align:top;
+            textarea[placeholder="Message"]{
                 height:150px;
             }
             button{
