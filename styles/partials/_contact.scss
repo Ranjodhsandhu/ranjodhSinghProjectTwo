@@ -7,9 +7,10 @@
     margin:0 auto;
     width:70%;
 }
-.contactMain .contactMainInner{
+.contactMainInner{
     display:flex;
     position:relative;
+    padding-bottom:100px;
     h2{
         margin-top:100px;
     }
@@ -20,6 +21,7 @@
             padding:50px 0;
             display:flex;
             flex-wrap:wrap;
+            transition:all 0.3s linear;
             input{
                 background-color:$white;
                 border:none;
@@ -59,18 +61,42 @@
         right:-15vw;
         bottom:0;
         top:0;
+        transition:all 0.3s linear;
         .asideWrapper{
             overflow:hidden;
             width:55%;
             display:flex;
             flex-direction:column;
-            div > p:nth-of-type(1){
+            p{
+                line-height: 2rem;
+            }
+            .contact > p{
                 padding-top:50px;
             } 
+            .hours{
+                margin-top:50px;
+                margin-bottom:30px;
+                p:nth-of-type(1){
+                    padding-top:10px;
+                }
+                p:nth-of-type(2){
+                    color:$brownGrey;
+                }
+            }
+            .address{
+                margin-bottom:100px;
+                p{
+                    color:$brownGrey;
+                }
+                p:nth-of-type(1),
+                p:nth-of-type(3),
+                p:last-child{
+                    padding-top:10px;
+                }
+            }
         }
     }
 }
-
 .contactBottomImage{
     background-image:url("../delicious-assets/contact-2.jpeg");
     background-size: cover;
