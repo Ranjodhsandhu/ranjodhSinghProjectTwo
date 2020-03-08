@@ -6,8 +6,6 @@ header{
     background-position: center;
     background-color:$brownGrey;
     color:$black;
-    
-
     h1{
         font-size:3.6rem;
         line-height: 3.8rem;
@@ -34,8 +32,8 @@ header{
         li.shoppingBag{
             span{
                 position:relative;
+            
                 .countCircle {
-                    display:inline-block;
                     line-height:1px;
                     border-radius:50%;
                     border:1px solid $mainGreen;
@@ -44,14 +42,14 @@ header{
                     position:absolute;
                     right:-6px;
                     bottom:-6px;
-                }
-                .countCircle span {
-                    display:inline-block;
-                    padding-top:50%;
-                    padding-bottom:50%;
-                    color:$white;
-                    margin-left:3px;
-                    margin-right:3px;
+                    span {
+                        display:inline-block;
+                        padding-top:50%;
+                        padding-bottom:50%;
+                        color:$white;
+                        margin-left:3px;
+                        margin-right:3px;
+                    }
                 }
             }
         }
@@ -62,13 +60,12 @@ header{
     a{
         font-size:1.4rem;
         padding:10px;
+        transition:all 0.3s linear;
     }
-}
+    a:hover{
+        color:$mainGreen;
+    }
 
-.topBar .threeBars{
-    display:none;
-    font-size:3rem;
-    font-weight:bold;
 }
 header.homeHeader{
     background-image:url("../delicious-assets/home-1.jpeg");
@@ -85,3 +82,70 @@ header.blogHeader{
 header.contactHeader{
     background-image:url("../delicious-assets/contact-1.jpeg");
 }
+
+.topBar{
+    .menu-icon {
+        cursor: pointer;
+        display: inline-block;
+        padding: 20px 20px;
+        position: relative;
+        user-select: none;
+        .navicon {
+            background: $black;
+            display: block;
+            height: 4px;
+            position: relative;
+            transition: background .2s ease-out;
+            width: 30px;
+        }
+        .navicon:before,
+        .navicon:after {
+            background: $black;
+            content: '';
+            display: block;
+            height: 100%;
+            position: absolute;
+            transition: all .2s ease-out;
+            width: 100%;
+        }
+        .navicon:before {
+            top: 8px;
+        }
+        .navicon:after {
+            top: -8px;
+        }
+    }
+
+}
+
+/* menu button animation on click 
+    This chunk of code is taken with all due respect from codepen, It was available under the MIT licence. 
+*/
+.topBar {
+    .menu-btn {
+        display: none;
+    }
+    .menu-btn:checked ~ .menu {
+        max-height: 240px;
+    }
+    .menu-btn:checked ~ .menu-icon .navicon {
+        background: transparent;
+    }
+    .menu-btn:checked ~ .menu-icon .navicon:before {
+        transform: rotate(-45deg);
+    }
+    .menu-btn:checked ~ .menu-icon .navicon:after {
+        transform: rotate(45deg);
+    }
+    .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+    .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+        top: 0;
+    }
+}
+.topBar .menu-icon .navicon {
+    display:none;
+}
+
+
+
+

@@ -25,25 +25,30 @@
                         delicious
                     </h1>
                 </div>
-                <ul>
-                    <li><a href="./index.html">home</a></li>
+                <ul class="menu">
+                    <li><a href="#" class="current">home</a></li>
                     <li><a href="#">about</a></li>
                     <li><a href="#">recipes</a></li>
                     <li><a href="#">nutrition</a></li>
                     <li><a href="./blog.html">blog</a></li>
                     <li><a href="#">shop</a></li>
-                    <li><a href="#" class="current">contact</a></li>
+                    <li><a href="./contact.html">contact</a></li>
                     <li class="shoppingBag">
                         <a href="#">
+                            <!-- shopping bag with the counter -->
                             <span class="ShoppingBagCount">
                                 <i class="fas fa-shopping-bag"></i>
                                 <span class="countCircle"><span>2</span></span>
                             </span>
                         </a>
                     </li>
+                    <!-- search button in menu -->
                     <li><a href="#"><i class="fas fa-search"></i></a></li>
                 </ul>
-                <a href="#home" class="threeBars"><i class="fas fa-bars"></i></a>
+                
+                
+                <input class="menu-btn" type="checkbox" id="menu-btn" />
+                <label class="menu-icon" for="menu-btn"><i><span class="navicon threeBars"></span></i></label>
             </nav>
         </div>
     </header>

@@ -46,13 +46,13 @@
     .headerLogo{
         text-align:center;
     }
-    .topBar .threeBars{
-        display:inline-block;
-    }
     .recipes{
         & > div:last-child ul{
             width:100%;
         }
+    }
+    .topBar .menu-icon .navicon {
+        display:block;
     }
 }
 @media(max-width:750px){
