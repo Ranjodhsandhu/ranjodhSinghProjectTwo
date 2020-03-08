@@ -24,13 +24,7 @@
             transition:all 0.3s linear;
             input,
             textarea{
-                background-color:$white;
-                border:none;
-                padding:20px;
                 margin-bottom:20px;
-            }
-            textarea{
-                resize:none;
             }
             input[name="name"]{
                 margin-right:20px;
@@ -52,6 +46,9 @@
                 background:none;
                 color:$mainGreen;
                 text-align:left;
+            }
+            button:hover{
+                color:darken($pink,20);
             }
         }
     }

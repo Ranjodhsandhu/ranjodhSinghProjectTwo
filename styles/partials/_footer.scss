@@ -58,11 +58,17 @@ footer {
             font-size:2rem;
         }
         input[type="email"]{
-            background-color:rgba(153, 153, 153,0.5);//$brownGrey;
-            border:none;
+            background-color:rgba(153, 153, 153,0.5);
             padding:20px;
+            margin:0;
             flex:1 1 80%;
             color:$white;
+        }
+        input[type="email"]:hover{
+            background-color:lighten($pink,20);
+        }
+        input[type="email"]:focus{
+            background-color:darken($pink,20);
         }
     }
     ul{

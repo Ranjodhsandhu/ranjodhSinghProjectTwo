@@ -22,9 +22,8 @@ img {
     padding: 0; 
 }
 .largeWrapper{
-    // max-width:2000px;
-    // width:100%;
-    // margin:0 auto;
+    max-width:1500px;
+    margin:0 auto;
 }
 .wrapper {
     max-width: 1200px;
@@ -46,9 +45,11 @@ h2,
 h3,
 h4,
 a,
-button{
+button,
+i{
     text-transform:uppercase;
     font-family:$raleway;
+    transition:all 0.3s linear;
 }
 h1{
     display:inline-block;
@@ -71,6 +72,42 @@ a {
 a.current{
     color:$mainGreen;
 }
+button{
+    border:none;
+    background-color:$mainGreen;
+}
 button:hover{
     cursor:pointer;
+    background-color:darken($pink,20);
+}
+input,
+textarea{
+    transition:all 0.3s linear;
+}
+input,
+textarea{
+    border:2px solid $white; 
+    background-color:$white;
+    margin:10px 0;
+    border:transparent;
+    padding:20px;
+}
+textarea{
+    resize:none;
+}
+input:hover,
+textarea:hover{
+    border-color:$mainGreen;
+    background-color:$lightGreen;
+}
+input:focus,
+textarea:focus{
+    border-color:$mainGreen;
+    background-color:darken($lightGreen,50);
+    color:$white;
+}
+
+i:hover{
+    cursor:pointer;
+    color:darken($pink,20);
 }

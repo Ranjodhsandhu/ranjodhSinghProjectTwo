@@ -185,15 +185,6 @@
         padding:20px 0;
         display:flex;
         flex-wrap:wrap;
-        input,
-        textarea{
-            border:2px solid $white; 
-            padding:2% 2%;
-            margin:10px 0;
-        }
-        textarea{
-            resize:none;
-        }
         input[name="name"],
         input[name="email"]{
             margin-right:20px;
@@ -210,13 +201,11 @@
         }
         button{
             width:fit-content;
-            background-color:$mainGreen;
             color:$white;
             border:none;
             padding:1% 2%;
             width:calc(((100%/3) - 20px)/2);
             font-size:1.4rem;
-            transition:all 0.3s linear;
         }
     }
 }
