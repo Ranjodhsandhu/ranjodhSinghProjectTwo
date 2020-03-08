@@ -1,46 +1,67 @@
 .contactMain{
     display:flex;
-    flex-direction:row;
+    flex-direction:column;
 }
-
-.contactForm{
-    flex:1 1 50%;
-    margin:10% 0;
-    padding-right:5%;
-    form{
-        padding:50px 0;
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        grid-template-rows:50px 50px 150px 50px; 
-        grid-gap:30px;
-        input{
-            background-color:$white;
-            border:none;
-            padding:10px;
-        }
-        input[placeholder="Subject"],
-        input[placeholder="Message"]{
-            grid-column-start: 1;
-            grid-column-end:span 2;
-        }
-        input[placeholder="Message"]{
-            text-align:top;
-        }
-        button{
-            width:50%;
-            border:none;
-            background:none;
-            color:$mainGreen;
-            text-align:left;
+.contactMainWrapper{
+    max-width:1200px;
+    margin:0 auto;
+    width:70%;
+}
+.contactMain .contactMainInner{
+    display:flex;
+    position:relative;
+    h2{
+        margin-top:100px;
+    }
+    .contactForm{
+        width:70%;
+        padding-right:5%;
+        form{
+            padding:50px 0;
+            display:flex;
+            flex-wrap:wrap;
+            input{
+                background-color:$white;
+                border:none;
+                padding:20px;
+                margin-bottom:20px;
+            }
+            input[name="name"]{
+                margin-right:20px;
+            }
+            input[name="name"],
+            input[name="email"]{
+                flex:1 1 40%;
+            }
+            input[placeholder="Subject"],
+            input[placeholder="Message"]{
+                flex:1 1 100%;
+            }
+            input[placeholder="Message"]{
+                text-align:top;
+                height:150px;
+            }
+            button{
+                width:50%;
+                border:none;
+                background:none;
+                color:$mainGreen;
+                text-align:left;
+            }
         }
     }
-}
-.contactMain {
-    aside{
-        flex:1 1 40%;
+    .contactDetails{
+        flex: 1 1 30%;
         background-color:$white;
-        padding:15% 50% 10% 5% ;
+        padding-left:5% ;
+        position:absolute;
+        left:70%;
+        right:-15vw;
+        bottom:0;
+        top:0;
         .asideWrapper{
+            overflow:hidden;
+            width:55%;
             display:flex;
             flex-direction:column;
             div > p:nth-of-type(1){
@@ -50,11 +71,10 @@
     }
 }
 
-.bottomImage{
+.contactBottomImage{
     background-image:url("../delicious-assets/contact-2.jpeg");
     background-size: cover;
     background-position: center;
     background-attachment: initial;
     height: 55vh;
-    width:100%;
 }
