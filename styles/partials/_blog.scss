@@ -42,7 +42,7 @@
         }
     }
     .blogPostTags{
-        > a{
+        & > a{
             text-transform:none;
             font-family: $lora;
             color:$brownGrey;

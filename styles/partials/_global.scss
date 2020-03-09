@@ -45,8 +45,7 @@ h2,
 h3,
 h4,
 a,
-button,
-i{
+button{
     text-transform:uppercase;
     font-family:$raleway;
     transition:all 0.3s linear;
@@ -76,10 +75,12 @@ button{
     border:none;
     background-color:$mainGreen;
 }
-button:hover{
+button:hover,
+button:focus{
     cursor:pointer;
     background-color:darken($pink,20);
 }
+
 input,
 textarea{
     transition:all 0.3s linear;
@@ -107,16 +108,13 @@ textarea:focus{
     color:$white;
 }
 
-i:hover{
-    cursor:pointer;
-    color:darken($pink,20);
-}
 
 // animation for page loading, common to all pages 
+// following animation works on firefox perfectly
 header {  
-    animation: 1s ease-out 0s 1 slideInFromLeft;
+    animation: 1s ease-out 0s 1 slideInFromRight;
 }
-@keyframes slideInFromLeft {
+@keyframes slideInFromRight {
     0% {
         transform: translateX(100%);
     }

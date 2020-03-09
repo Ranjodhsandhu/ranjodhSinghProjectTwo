@@ -1,0 +1,105 @@
+<!-- hamburger menu -->
+            <!--
+                This input and label are for the creating the effect of showing the menu from the side bar on small screens with animation.
+            -->
+            <input class="menu-btn" type="checkbox" id="toggle" name="toggle">
+            <!-- These are siblings -->
+            <ul class="nav">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./blog.html">Blog</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+            <label for="toggle" class="menu-icon"><i><span class="navicon"></span></label>
+
+
+// code for the icon to appear on small screens
+.menu-icon {
+    cursor: pointer;
+    display: inline-block;
+    padding: 15px;
+    position: relative;
+    .navicon {
+        background: $black;
+        display: block;
+        height: 3px;
+        position: relative;
+        transition: all .2s ease-out;
+        width: 25px;
+    }
+    .navicon:before,
+    .navicon:after {
+        background: $black;
+        content: '';
+        display: block;
+        height: 100%;
+        position: absolute;
+        transition: all .2s ease-out;
+        width: 100%;
+    }
+    .navicon:before {
+        top: 8px;
+    }
+    .navicon:after {
+        top: -8px;
+    }
+}
+
+// code for the navigation to open on the hamburger menu click checkbox
+// This chunk of code was from an example we completed in the class for the side menu
+/* nav code: */
+
+
+ul.nav {
+    background:$lightGreen;
+    position: fixed;
+    z-index: 10;
+    width: 30%;
+    right: -30%;
+    top: 0;
+    height: 100%;
+    transition: all 0.5s;
+}
+ul.nav a {
+    border-bottom: 1px solid $brownGrey;
+    display: inline-block;
+    font-size:1.6rem;
+    width: 100%;
+    padding: 10px;
+    transition: all 0.3s;
+}
+/* menu button animation on click 
+This chunk of code is taken with all due respect from codepen, It was available under the MIT licence. 
+*/
+
+.menu-btn {
+    display: none;
+}
+
+.menu-btn:checked  ~ .menu-icon .navicon {
+    background: transparent;
+}
+.menu-btn:checked  ~ .menu-icon .navicon:before {
+    transform: rotate(-45deg);
+}
+.menu-btn:checked  ~ .menu-icon .navicon:after {
+    transform: rotate(45deg);
+}
+.menu-btn:checked  ~ .menu-icon:not(.steps) .navicon:before,
+.menu-btn:checked  ~ .menu-icon:not(.steps) .navicon:after {
+    top: 0;
+}
+.menu-btn:checked ~ ul.nav {
+    right: 0;  
+}
+.menu-icon .navicon {
+    display:none;
+}
+
+/*position the menu is fixed to keep it at a place when the side menu opens*/
+label[for="toggle"] {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    color: $black;
+    z-index: 10;
+}

@@ -47,7 +47,8 @@
                 color:$mainGreen;
                 text-align:left;
             }
-            button:hover{
+            button:hover,
+            button:focus{
                 color:darken($pink,20);
             }
         }

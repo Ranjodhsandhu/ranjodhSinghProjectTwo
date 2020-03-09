@@ -40,7 +40,7 @@
     header.homeHeader{
         background-attachment: scroll;
     }   
-    header .topBar ul{
+    header .topBar ul.menu{
         display:none;   
     }
     .headerLogo{
@@ -51,7 +51,7 @@
             width:100%;
         }
     }
-    .topBar .menu-icon .navicon {
+    .menu-icon .navicon {
         display:block;
     }
 }
