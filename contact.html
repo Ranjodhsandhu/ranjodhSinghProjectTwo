@@ -45,9 +45,18 @@
                     <!-- search button in menu -->
                     <li><a href="#"><i class="fas fa-search"></i></a></li>
                 </ul>
-                <input class="menu-btn" type="checkbox" id="menu-btn" />
-                <label class="menu-icon" for="menu-btn"><i><span class="navicon threeBars"></span></i></label>
             </nav>
+            <!-- hamburger menu -->
+            <!--
+            This input and label are for the creating the effect of showing the menu from the side bar on small screens with animation      -->
+            <input class="menu-btn" type="checkbox" id="toggle" name="toggle">
+            <!-- These are siblings -->
+            <ul class="nav">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./blog.html">Blog</a></li>
+                <li><a href="./contact.html">Contact</a></li>
+            </ul>
+            <label for="toggle" class="menu-icon"><i><span class="navicon"></span></i></label>
         </div>
     </header>
     <!-- end of header -->
