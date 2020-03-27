@@ -115,7 +115,32 @@ main.homeMain{
     p{
         width:750px;
     }
+}
+.foodCircle{
+    position:relative;
+    .foodCenter{
+        position:absolute;
+        top: 100px;
+        right: 30px;
+        -webkit-transform: translate(5px, -35px);
+        transform: translate(5px, -35px);
+        width: 150px;
     }
+}
+// apply rotation animation for the text circle
+.foodRotating{
+    animation: rotatingAnimation 25s linear infinite;
+}
+@keyframes rotatingAnimation{
+    0%{
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    100%{
+        -webkit-transform: rotate(-1turn);
+        transform: rotate(-1turn);
+    }
+}
 .quotes{
     background-color:$lightGreen;
     >div{

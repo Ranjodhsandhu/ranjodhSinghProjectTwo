@@ -51,6 +51,16 @@
     .menu-icon .navicon {
         display:block;
     }
+    .restrauntPicture{
+        .watermarkImage{
+            top:0px;
+            left:50%;
+            transform:translate(-50%,-50%);
+        }
+    }
+    .stackedImages{
+        width:100%;
+    }
 }
 @media(max-width:750px){
     .recipes .mostRecent{
@@ -77,8 +87,6 @@
     }
     .restrauntPicture{
         .watermarkImage{
-            width:150px;
-            height:150px;
             top:-25px;
             right:-25px;
         }
@@ -86,9 +94,6 @@
             width:100%;
             padding:0 10%;
         }
-    }
-    .stackedImages{
-        width:60%;
     }
 }
 @media(max-width:675px){
@@ -124,8 +129,14 @@
             transform:translate(-50%,-50%);
         }
     }
-    .stackedImages{
-        width:100%;
+    .foodCircle {
+        .foodCenter{
+            top: 65px;
+            right: 25px;
+            -webkit-transform: translate(5px, -35px);
+            transform: translate(13px, -35px);
+            width: 75px;
+        }
     }
     .gallery{
         ul{
