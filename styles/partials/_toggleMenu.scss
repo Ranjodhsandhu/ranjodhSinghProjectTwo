@@ -34,33 +34,40 @@
 // This chunk of code was from an example we completed in the class for the side menu
 /* nav code: */
 
-
-ul.nav {
-    background:$lightGreen;
-    position: fixed;
-    z-index: 10;
-    width: 30%;
-    right: -30%;
-    top: 0;
-    height: 100%;
-    transition: all 0.5s;
+@media(max-width:962px){
+    ul.menu {
+        background:$lightGreen;
+        position: fixed;
+        z-index: 10;
+        width: 30%;
+        right: -30%;
+        top: 0;
+        height: 100%;
+        transition: all 0.5s;
+        flex-direction:column;
+        justify-content:space-around;
+        li{flex-grow:0;}
+    }
+    ul.menu a {
+        border-bottom: 1px solid $brownGrey;
+        display: inline-block;
+        font-size:1.6rem;
+        width: 100%;
+        padding: 10px;
+        transition: all 0.3s;
+    }
 }
-ul.nav a {
-    border-bottom: 1px solid $brownGrey;
-    display: inline-block;
-    font-size:1.6rem;
-    width: 100%;
-    padding: 10px;
-    transition: all 0.3s;
+@media(max-width:450px){
+    ul.menu a {
+        font-size:1.2rem;
+    }
 }
 /* menu button animation on click 
 This chunk of code is taken with all due respect from codepen, It was available under the MIT licence. 
 */
-
 .menu-btn {
     display: none;
 }
-
 .menu-btn:checked  ~ .menu-icon .navicon {
     background: transparent;
 }
@@ -74,13 +81,12 @@ This chunk of code is taken with all due respect from codepen, It was available 
 .menu-btn:checked  ~ .menu-icon:not(.steps) .navicon:after {
     top: 0;
 }
-.menu-btn:checked ~ ul.nav {
+.menu-btn:checked ~ ul.menu {
     right: 0;  
 }
 .menu-icon .navicon {
     display:none;
 }
-
 /*position the menu is fixed to keep it at a place when the side menu opens*/
 label[for="toggle"] {
     position: fixed;
@@ -88,4 +94,4 @@ label[for="toggle"] {
     left: 10px;
     color: $black;
     z-index: 10;
-}
+}   
