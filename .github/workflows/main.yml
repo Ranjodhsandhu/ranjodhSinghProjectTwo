@@ -1,0 +1,28 @@
+name: Deploy Static Site
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: npm install -g sass
+
+      - run: sass scss/styles.scss css/styles.css
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - run: |
+          aws s3 sync . s3://${{ secrets.S3_BUCKET }} \
+            --exclude ".git/*" \
+            --exclude "scss/*" \
+            --delete
