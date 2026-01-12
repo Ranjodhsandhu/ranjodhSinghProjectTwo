@@ -1,4 +1,4 @@
-export function callAwsData(){
+function callAwsData(){
     fetch('https://kpyupsvpue.execute-api.us-east-1.amazonaws.com/dev/hello')
     .then(response => response.json())
     .then(data => {
