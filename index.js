@@ -20,7 +20,7 @@ export async function signOutRedirect () {
     window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
 };
 
-function callAwsData(){
+export function callAwsData(){
     fetch('https://kpyupsvpue.execute-api.us-east-1.amazonaws.com/dev/hello')
     .then(response => response.json())
     .then(data => {
