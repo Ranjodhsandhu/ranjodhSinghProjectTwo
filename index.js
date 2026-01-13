@@ -1,6 +1,7 @@
 // import { UserManager } from 'https://cdn.jsdelivr.net/npm/oidc-client-ts@2.4.1/dist/oidc-client-ts.esm.js';
 // import {UserManager} from 'https://cdnjs.cloudflare.com/ajax/libs/oidc-client-ts/3.3.0/browser/oidc-client-ts.min.js';
-import {UserManager} from 'https://cdnjs.cloudflare.com/ajax/libs/oidc-client-ts/3.3.0/esm/oidc-client-ts.js';
+// import {UserManager} from 'https://cdnjs.cloudflare.com/ajax/libs/oidc-client-ts/3.3.0/esm/oidc-client-ts.js';
+import {UserManager} from 'https://cdnjs.cloudflare.com/ajax/libs/oidc-client-ts/3.3.0/umd/oidc-client-ts.min.js';
 
 const cognitoAuthConfig = {
     authority: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_HXpPDeMec",
