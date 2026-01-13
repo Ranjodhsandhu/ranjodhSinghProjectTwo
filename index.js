@@ -1,3 +1,25 @@
+import { UserManager } from "oidc-client-ts";
+
+const cognitoAuthConfig = {
+    authority: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_HXpPDeMec",
+    client_id: "3u7q4ibc22oueihj4b7q141quv",
+    redirect_uri: "https://master.d14qlcgzstnyh7.amplifyapp.com/",
+    response_type: "code",
+    scope: "phone openid email"
+};
+
+// create a UserManager instance
+export const userManager = new UserManager({
+    ...cognitoAuthConfig,
+});
+
+export async function signOutRedirect () {
+    const clientId = "3u7q4ibc22oueihj4b7q141quv";
+    const logoutUri = "/logout-callback.html";
+    const cognitoDomain = "https://us-east-1hxppdemec.auth.us-east-1.amazoncognito.com";
+    window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
+};
+
 function callAwsData(){
     fetch('https://kpyupsvpue.execute-api.us-east-1.amazonaws.com/dev/hello')
     .then(response => response.json())
