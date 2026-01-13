@@ -322,6 +322,7 @@
         <button id="signOut">Log out</button>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/oidc-client-ts/3.3.0/umd/oidc-client-ts.min.js"></script>
+    <script type="module" src="index.js"></script>
     <script type="module">
         import { signOutRedirect } from "./index.js";
 
@@ -346,7 +347,6 @@
             await userManager.signinRedirect();
         });
     </script>
-    <script type="module" src="index.js"></script>
 </body>
     
 </html>
