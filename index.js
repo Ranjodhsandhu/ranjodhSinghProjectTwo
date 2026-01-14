@@ -24,3 +24,14 @@ function callAwsData(){
         console.error('Error fetching data from AWS:', error);
     });
 }
+document.addEventListener("DOMContentLoaded", () => {
+  document
+    .getElementById("signIn")
+    .addEventListener("click", redirectToCognitoSignin);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  document
+    .getElementById("signOut")
+    .addEventListener("click", signOutRedirect);
+});
