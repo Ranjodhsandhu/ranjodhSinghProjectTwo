@@ -16,6 +16,13 @@
     <title>Delicious</title>
 </head>
 <body>
+    
+     <div>
+        <button id="signIn" onclick=redirectToCognitoSignin()>Sign In</button>
+    </div>
+    <div>
+        <button id="signOut">Sign out</button>
+    </div>
     <!-- start of the header -->
     <header class="homeHeader">
         <div class="largeWrapper">
@@ -307,46 +314,8 @@
         </div>
     </footer>
     <!-- end of footer -->
-     <div>
-        <button id="signIn">Sign In</button>
-    </div>
-
-    <div>
-        Hello: <pre id="email"></pre>
-        Access token: <pre id="access-token"></pre>
-        ID token: <pre id="id-token"></pre>
-        Refresh token: <pre id="refresh-token"></pre>
-    </div>
-
-    <div>
-        <button id="signOut">Log out</button>
-    </div>
-    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/oidc-client-ts/3.3.0/umd/oidc-client-ts.min.js"></script>
+    
     <script type="module" src="index.js"></script>
-    <script type="module">
-        import { signOutRedirect } from "./index.js";
-
-        document.getElementById("signOut").addEventListener("click", async () => {
-            await signOutRedirect();
-        });
-    </script>
-    <script type="module">
-        import { userManager } from "./index.js";
-
-        userManager.signinCallback().then(function (user) {
-            document.getElementById("email").textContent = user.profile?.email;
-            document.getElementById("access-token").textContent = user.access_token;
-            document.getElementById("id-token").textContent = user.id_token;
-            document.getElementById("refresh-token").textContent = user.refresh_token;
-        });
-    </script>
-    <script type="module">
-        import { userManager } from "./index.js";
-
-        document.getElementById("signIn").addEventListener("click", async () => {
-            await userManager.signinRedirect();
-        });
-    </script>
 </body>
     
 </html>
