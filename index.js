@@ -1,5 +1,5 @@
 function redirectToCognitoSignin(){
-    const loginUrl = "https://us-east-1hxppdemec.auth.us-east-1.amazoncognito.com";
+    const cognitoDomain = "https://us-east-1hxppdemec.auth.us-east-1.amazoncognito.com";
     const clientId = "3u7q4ibc22oueihj4b7q141quv";
     const responseType = "token";
     const scope= "email+openid+phone";
