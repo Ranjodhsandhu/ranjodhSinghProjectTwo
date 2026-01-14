@@ -23,7 +23,7 @@ function callAwsData(){
     })
     .then(res => {
       if (res.status === 401) {
-        throw new Error("Unauthorized");
+        redirectToCognitoSignin();
       }
       return res.json();
     })
@@ -31,7 +31,7 @@ function callAwsData(){
         console.log(data)
         document.getElementById('aws-data').innerText = data.body;       
     })
-    .catch(err => console.error('Error fetching data from AWS:', error) );
+    .catch(err => console.error('Error fetching data from AWS:', err) );
 }
 
 function getTokensFromUrl() {
