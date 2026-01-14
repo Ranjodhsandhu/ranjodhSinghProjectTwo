@@ -1,0 +1,22 @@
+{
+  "name": "ranjodhsinghprojecttwo",
+  "version": "1.0.0",
+  "description": "static website with aws protected connection with oauth",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ranjodhsandhu/ranjodhSinghProjectTwo.git"
+  },
+  "author": "Ranjodh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ranjodhsandhu/ranjodhSinghProjectTwo/issues"
+  },
+  "homepage": "https://github.com/Ranjodhsandhu/ranjodhSinghProjectTwo#readme",
+  "dependencies": {
+    "oidc-client-ts": "^3.4.1"
+  }
+}
