@@ -31,7 +31,7 @@ function callAwsData(){
         console.log(data)
         document.getElementById('aws-data').innerText = data.body;       
     })
-    .catch(err => console.error('Error fetching data from AWS:', error););
+    .catch(err => console.error('Error fetching data from AWS:', error) );
 }
 
 function getTokensFromUrl() {
