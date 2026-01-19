@@ -51,7 +51,7 @@ function base64UrlEncode(buffer){
         .replace(/\//g, "_")
         .replace(/=+$/, "");
 }
-function generateCodeChallenge(verifier){
+async function generateCodeChallenge(verifier){
     const hashed = await convertSH256(verifier);
     return base64UrlEncode(hashed);
 }
