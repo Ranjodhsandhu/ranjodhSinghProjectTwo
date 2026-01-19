@@ -40,7 +40,7 @@ function generateRandomString(length){
     }
     return result;
 }
-async function sha256(plain){
+async function convertSH256(plain){
     const encoder = new TextEncoder();
     const data = encoder.encode(plain);
     return window.crypto.subtle.digest("SHA-256",data);
@@ -52,7 +52,7 @@ function base64UrlEncode(buffer){
         .replace(/=+$/, "");
 }
 function generateCodeChallenge(verifier){
-    const hashed = await sha256(verifier);
+    const hashed = await convertSH256(verifier);
     return base64UrlEncode(hashed);
 }
 function getTokensFromUrl() {
