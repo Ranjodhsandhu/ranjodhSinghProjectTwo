@@ -122,15 +122,15 @@ function getCodeFromUrl(){
     const params = new URLSearchParams(window.location.search);
     return params.get("code");
 }
-async function exchangeCodeForToken(code){
+async function exchangeCodeForToken(authCode){
     const verifier = sessionStorage.getItem("pkce_verifier");
     const body = new URLSearchParams({
         grant_type: "authorization_code",
         client_id: clientId,
-        code,
+        code: authCode,
         redirectUri: redirectUri,
         code_verifier: verifier
-    });
+    }).toString();
     const tokenUrl = cognitoDomain +"/oauth2/token"; 
     const response = await fetch(tokenUrl,{
         method: "POST",
