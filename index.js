@@ -54,9 +54,24 @@ function getIdToken() {
 function getExpiresIn(){
     return sessionStorage.getItem("expires_in");
 }
+function parseJWTIdToken(token){
+    if(!token) return null;
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/,'/');
+    const jsonPayload = decodeURIComponent(
+        atob(base64)
+            .split('')
+            .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+            .join('')
+    );
+    return JSON.parse(jsonPayload);
+}
 document.addEventListener("DOMContentLoaded", () => {
   const tokens = getTokensFromUrl();
-
+  if(tokens.idToken){
+      const userInfo = parseJWTIdToken(tokens.idToken);
+      console.log(userInfo);
+  }
   if (tokens.accessToken) {
     storeTokens(tokens);
     // clean URL
