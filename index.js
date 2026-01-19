@@ -1,20 +1,21 @@
+const { cognitoDomain, clientId, redirectUri, logoutUri, helloEndpoint}
 function redirectToCognitoSignin(){
-    const cognitoDomain = "https://us-east-1fbrmebrpm.auth.us-east-1.amazoncognito.com";
-    const clientId = "4njv430igdgtiktp1ihoj2mbsp";
+    //const cognitoDomain = "https://us-east-1fbrmebrpm.auth.us-east-1.amazoncognito.com";
+    //const clientId = "4njv430igdgtiktp1ihoj2mbsp";
     const responseType = "token";
     const scope= "email+openid+phone";
-    const redirectUri = "https%3A%2F%2Fmaster.d14qlcgzstnyh7.amplifyapp.com%2F";
+    //const redirectUri = "https%3A%2F%2Fmaster.d14qlcgzstnyh7.amplifyapp.com%2F";
     window.location.href = `${cognitoDomain}/login?client_id=${clientId}&response_type=${responseType}&scope=${scope}&redirect_uri=${redirectUri}`;
 }
 function signOutRedirect () {
-    const cognitoDomain = "https://us-east-1fbrmebrpm.auth.us-east-1.amazoncognito.com";
-    const clientId = "4njv430igdgtiktp1ihoj2mbsp";
-    const logoutUri = "https://master.d14qlcgzstnyh7.amplifyapp.com/logout-callback.html";
+    //const cognitoDomain = "https://us-east-1fbrmebrpm.auth.us-east-1.amazoncognito.com";
+    //const clientId = "4njv430igdgtiktp1ihoj2mbsp";
+    //const logoutUri = "https://master.d14qlcgzstnyh7.amplifyapp.com/logout-callback.html";
     window.location.href = `${cognitoDomain}/logout/?client_id=${clientId}&logout_uri=${logoutUri}`;
 };
 
 function callAwsData(){
-    fetch("https://kpyupsvpue.execute-api.us-east-1.amazonaws.com/dev/hello", {
+    fetch(helloEndpoint, {      //"https://kpyupsvpue.execute-api.us-east-1.amazonaws.com/dev/hello", {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${getAccessToken()}`,
