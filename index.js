@@ -68,10 +68,12 @@ function parseJWTIdToken(token){
 }
 document.addEventListener("DOMContentLoaded", () => {
   const tokens = getTokensFromUrl();
-  if(tokens.idToken){
-      const userInfo = parseJWTIdToken(tokens.idToken);
-      console.log(userInfo);
-  }
+  
+  const userInfo = parseJWTIdToken(tokens.idToken) || sessionStorage.getItem("id_token");
+  console.log(userInfo);
+  const username = userInfo.name;
+  document.getElementById("welcome").innerText = `Hi, ${username}`;
+
   if (tokens.accessToken) {
     storeTokens(tokens);
     // clean URL
