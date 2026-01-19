@@ -141,24 +141,28 @@ async function exchangeCodeForToken(code){
     });
     return response.json();
 }
-document.addEventListener("DOMContentLoaded", async () => {
-  // const tokens = getTokensFromUrl();
-  const authCode = getCodeFromUrl();
-  let tokens = "";
-  if(authCode){
+async function handleAuthRedirect(){
+    const authCode = getCodeFromUrl();
+    let tokens = "";
+    if(authCode){
       tokens = await exchangeCodeForToken(authCode);
       console.log(tokens);
-  }
-  
-  // const userInfo = parseJWTIdToken(tokens.idToken) || parseJWTIdToken(sessionStorage.getItem("id_token"));
-  // const username = userInfo?.name || '';
-  // if(username)
-  //     document.getElementById("welcome").innerText = `Hi, ${username}`;
-
-  if (tokens.accessToken) {
+    }
+    if (tokens.accessToken) {
     storeTokens(tokens);
     // clean URL
     window.history.replaceState({}, document.title, window.location.pathname);
   }
     updateAuthUI();
+}
+document.addEventListener("DOMContentLoaded", () => {
+  // const tokens = getTokensFromUrl();
+  // const userInfo = parseJWTIdToken(tokens.idToken) || parseJWTIdToken(sessionStorage.getItem("id_token"));
+  // const username = userInfo?.name || '';
+  // if(username)
+  //     document.getElementById("welcome").innerText = `Hi, ${username}`;
+  handleAuthRedirect().catch(err=>{
+      console.error("Auth redirect failed:", err);
+  })
+  
 });
