@@ -1,5 +1,5 @@
 const { cognitoDomain, clientId, redirectUri, logoutUri, helloEndpoint} = window.APP_CONFIG;
-function redirectToCognitoSignin(){
+async function redirectToCognitoSignin(){
     const verifier = generateRandomString(64);
     sessionStorage.setItem("pkce_verifier", verifier);
     const challenge = await generateCodeChallenge(verifier); 
@@ -141,12 +141,12 @@ async function exchangeCodeForToken(code){
     });
     return response.json();
 }
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   // const tokens = getTokensFromUrl();
   const authCode = getCodeFromUrl();
   let tokens = "";
   if(authCode){
-      tokens = exchangeCodeForToken(authCode);
+      tokens = await exchangeCodeForToken(authCode);
       console.log(tokens);
   }
   
