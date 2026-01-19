@@ -9,10 +9,11 @@ function signOutRedirect () {
 };
 
 function callAwsData(){
+    const aToken = getAccessToken();
     fetch(helloEndpoint, {
       method: "GET",
       headers: {
-        "Authorization": `Bearer ${getAccessToken()}`,
+        "Authorization": `Bearer ${aToken}`,
         "Content-Type": "application/json"
       }
     })
