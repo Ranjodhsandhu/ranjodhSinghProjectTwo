@@ -144,10 +144,10 @@ async function exchangeCodeForToken(code){
 document.addEventListener("DOMContentLoaded", () => {
   // const tokens = getTokensFromUrl();
   const authCode = getCodeFromUrl();
-  let token = "";
+  let tokens = "";
   if(authCode){
-      token = exchangeCodeForToken(authCode);
-      console.log(token);
+      tokens = exchangeCodeForToken(authCode);
+      console.log(tokens);
   }
   
   // const userInfo = parseJWTIdToken(tokens.idToken) || parseJWTIdToken(sessionStorage.getItem("id_token"));
