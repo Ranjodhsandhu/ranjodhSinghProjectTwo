@@ -97,9 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const tokens = getTokensFromUrl();
   
   const userInfo = parseJWTIdToken(tokens.idToken) || parseJWTIdToken(sessionStorage.getItem("id_token"));
-  const username = '';
-  if(userInfo)
-      username = userInfo?.name || null;
+  const username = userInfo?.name || '';
   if(username)
       document.getElementById("welcome").innerText = `Hi, ${username}`;
 
