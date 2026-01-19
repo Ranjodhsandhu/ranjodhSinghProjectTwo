@@ -66,6 +66,33 @@ function parseJWTIdToken(token){
     );
     return JSON.parse(jsonPayload);
 }
+function isLoggedIn(){
+     const token = getIdToken();
+     if(!token) return false;
+     try{
+         const userInfo = parseJWTIdToken(sessionStorage.getItem("id_token"));
+         return Date.now() < userInfo.exp * 1000;
+     } catch{
+         return false;
+     }
+}
+function updateAuthUI(){
+    const authBtn = document.getElementById("authorize");
+    const welcome = document.getElementById("welcome");
+    if(isLoggedIn()){
+        const userInfo = parseJWTIdToken(sessionStorage.getItem("id_token"));
+        const username = userInfo.name;
+        authBtn.innerText = "Sign Out";
+        authBtn.onclick = signOutRedirect;
+
+        welcome.innerText  = `Hi, ${username}`;
+    }else{
+        authBtn.innerText = "Sign In";
+        authBtn.onclick = redirectToCognitoSignin;
+
+        welcome.innerText  = "";
+    }
+}
 document.addEventListener("DOMContentLoaded", () => {
   const tokens = getTokensFromUrl();
   
@@ -79,15 +106,5 @@ document.addEventListener("DOMContentLoaded", () => {
     // clean URL
     window.history.replaceState({}, document.title, window.location.pathname);
   }
-});
-document.addEventListener("DOMContentLoaded", () => {
-  document
-    .getElementById("signIn")
-    .addEventListener("click", redirectToCognitoSignin);
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  document
-    .getElementById("signOut")
-    .addEventListener("click", signOutRedirect);
+    updateAuthUI();
 });
