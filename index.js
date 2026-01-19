@@ -1,8 +1,11 @@
 const { cognitoDomain, clientId, redirectUri, logoutUri, helloEndpoint} = window.APP_CONFIG;
 function redirectToCognitoSignin(){
-    const responseType = "token";
+    const verifier = generateRandomString(64);
+    sessionStorage.setItem("pkce_verifier", verifier);
+    const challenge = await generateCodeChallenge(verifier); 
+    const responseType = "code";
     const scope= "email+openid+phone+profile";
-    window.location.href = `${cognitoDomain}/login?client_id=${clientId}&response_type=${responseType}&scope=${scope}&redirect_uri=${redirectUri}`;
+    window.location.href = `${cognitoDomain}/login?client_id=${clientId}&response_type=${responseType}&scope=${scope}&redirect_uri=${redirectUri}&code_challenge="${challenge}&code_challenge_method=S256`;
 }
 function signOutRedirect () {
     window.location.href = `${cognitoDomain}/logout/?client_id=${clientId}&logout_uri=${logoutUri}`;
@@ -29,7 +32,29 @@ function callAwsData(){
     })
     .catch(err => console.error('Error fetching data from AWS:', err) );
 }
-
+function generateRandomString(length){
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+    for(let i=0; i<length; i++){
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return result;
+}
+async function sha256(plain){
+    const encoder = new TextEncoder();
+    const data = encoder.encode(plain);
+    return window.crypto.subtle.digest("SHA-256",data);
+}
+function base64UrlEncode(buffer){
+    return btoa(String.fromCharCode(...new Uint8Array(buffer)))
+        .replace(/\+/g, "-")
+        .replace(/\//g, "_")
+        .replace(/=+$/, "");
+}
+function generateCodeChallenge(verifier){
+    const hashed = await sha256(verifier);
+    return base64UrlEncode(hashed);
+}
 function getTokensFromUrl() {
   const hash = window.location.hash.substring(1); // remove '#'
   const params = new URLSearchParams(hash);
@@ -93,13 +118,42 @@ function updateAuthUI(){
         welcome.innerText  = "";
     }
 }
+function getCodeFromUrl(){
+    const params = new URLSearchParams(window.location.search);
+    return params.get("code");
+}
+async function exchangeCodeForToken(code){
+    const verifier = sessionStorage.getItem("pkce_verifier");
+    const body = new URLSearchParams({
+        grant_type: "authorization_code",
+        client_id: clientId,
+        code,
+        redirectUri: redirectUri,
+        code_verifier: verifier
+    });
+    const tokenUrl = cognitoDomain +"/oauth2/token"; 
+    const response = await fetch(tokenUrl,{
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body
+    });
+    return response.json();
+}
 document.addEventListener("DOMContentLoaded", () => {
-  const tokens = getTokensFromUrl();
+  // const tokens = getTokensFromUrl();
+  const authCode = getCodeFromUrl();
+  let token = "";
+  if(authCode){
+      token = exchangeCodeForToken(authCode);
+      console.log(token);
+  }
   
-  const userInfo = parseJWTIdToken(tokens.idToken) || parseJWTIdToken(sessionStorage.getItem("id_token"));
-  const username = userInfo?.name || '';
-  if(username)
-      document.getElementById("welcome").innerText = `Hi, ${username}`;
+  // const userInfo = parseJWTIdToken(tokens.idToken) || parseJWTIdToken(sessionStorage.getItem("id_token"));
+  // const username = userInfo?.name || '';
+  // if(username)
+  //     document.getElementById("welcome").innerText = `Hi, ${username}`;
 
   if (tokens.accessToken) {
     storeTokens(tokens);
