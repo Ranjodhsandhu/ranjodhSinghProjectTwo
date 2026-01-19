@@ -41,10 +41,18 @@ function getTokensFromUrl() {
   };
 }
 function storeTokens(tokens) {
-  sessionStorage.setItem("access_token", tokens.accessToken);
+    sessionStorage.setItem("access_token", tokens.accessToken);
+    sessionStorage.setItem("id_token", tokens.idToken);
+    sessionStorage.setItem("expires_in", tokens.expiresIn);
 }
 function getAccessToken() {
-  return sessionStorage.getItem("access_token");
+    return sessionStorage.getItem("access_token");
+}
+function getIdToken() {
+    return sessionStorage.getItem("id_token");
+}
+function getExpiresIn(){
+    return sessionStorage.getItem("expires_in");
 }
 document.addEventListener("DOMContentLoaded", () => {
   const tokens = getTokensFromUrl();
