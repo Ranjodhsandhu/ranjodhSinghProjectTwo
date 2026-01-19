@@ -69,9 +69,9 @@ function parseJWTIdToken(token){
 document.addEventListener("DOMContentLoaded", () => {
   const tokens = getTokensFromUrl();
   
-  const userInfo = parseJWTIdToken(tokens.idToken) || sessionStorage.getItem("id_token");
-  console.log(userInfo);
+  const userInfo = parseJWTIdToken(tokens.idToken) || parseJWTIdToken(sessionStorage.getItem("id_token"));
   const username = userInfo.name;
+  if(username)
   document.getElementById("welcome").innerText = `Hi, ${username}`;
 
   if (tokens.accessToken) {
