@@ -1,7 +1,7 @@
 const { cognitoDomain, clientId, redirectUri, logoutUri, helloEndpoint} = window.APP_CONFIG;
 function redirectToCognitoSignin(){
     const responseType = "token";
-    const scope= "email+openid+phone";
+    const scope= "email+openid+phone+profile";
     window.location.href = `${cognitoDomain}/login?client_id=${clientId}&response_type=${responseType}&scope=${scope}&redirect_uri=${redirectUri}`;
 }
 function signOutRedirect () {
