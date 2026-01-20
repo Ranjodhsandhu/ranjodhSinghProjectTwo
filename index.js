@@ -95,12 +95,6 @@ function updateAuthUI(){
 }
 document.addEventListener("DOMContentLoaded", () => {
   const tokens = getTokensFromUrl();
-  
-  const userInfo = parseJWTIdToken(tokens.idToken) || parseJWTIdToken(sessionStorage.getItem("id_token"));
-  const username = userInfo?.name || '';
-  if(username)
-      document.getElementById("welcome").innerText = `Hi, ${username}`;
-
   if (tokens.accessToken) {
     storeTokens(tokens);
     // clean URL
