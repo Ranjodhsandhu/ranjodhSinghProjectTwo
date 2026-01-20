@@ -69,7 +69,7 @@ async function generateCodeChallenge(verifier){
 function storeTokens(tokens) {
     sessionStorage.setItem("access_token", tokens.access_token);
     sessionStorage.setItem("id_token", tokens.id_token);
-    sessionStorage.setItem("expires_in", tokens.expires_n);
+    sessionStorage.setItem("expires_in", tokens.expires_in);
 }
 function getAccessToken() {
     return sessionStorage.getItem("access_token");
