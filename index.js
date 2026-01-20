@@ -5,7 +5,7 @@ async function redirectToCognitoSignin(){
     const challenge = await generateCodeChallenge(verifier); 
     const responseType = "code";
     const scope= "email+openid+phone+profile";
-    window.location.href = `${cognitoDomain}/login?client_id=${clientId}&response_type=${responseType}&scope=${scope}&redirect_uri=${redirectUri}&code_challenge="${challenge}&code_challenge_method=S256`;
+    window.location.href = `${cognitoDomain}/login?client_id=${clientId}&response_type=${responseType}&scope=${scope}&redirect_uri=${redirectUri}&code_challenge=${challenge}&code_challenge_method=S256`;
 }
 function signOutRedirect () {
     window.location.href = `${cognitoDomain}/logout/?client_id=${clientId}&logout_uri=${logoutUri}`;
