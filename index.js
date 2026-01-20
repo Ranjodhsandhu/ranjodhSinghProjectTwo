@@ -55,20 +55,21 @@ async function generateCodeChallenge(verifier){
     const hashed = await convertSH256(verifier);
     return base64UrlEncode(hashed);
 }
-function getTokensFromUrl() {
-  const hash = window.location.hash.substring(1); // remove '#'
-  const params = new URLSearchParams(hash);
+// following method is used when using implicit grant because tokens are directly sent with the URL
+// function getTokensFromUrl() {
+//   const hash = window.location.hash.substring(1); // remove '#'
+//   const params = new URLSearchParams(hash);
 
-  return {
-    accessToken: params.get("access_token"),
-    idToken: params.get("id_token"),
-    expiresIn: params.get("expires_in")
-  };
-}
+//   return {
+//     accessToken: params.get("access_token"),
+//     idToken: params.get("id_token"),
+//     expiresIn: params.get("expires_in")
+//   };
+// }
 function storeTokens(tokens) {
-    sessionStorage.setItem("access_token", tokens.accessToken);
-    sessionStorage.setItem("id_token", tokens.idToken);
-    sessionStorage.setItem("expires_in", tokens.expiresIn);
+    sessionStorage.setItem("access_token", tokens.access_token);
+    sessionStorage.setItem("id_token", tokens.id_token);
+    sessionStorage.setItem("expires_in", tokens.expires_n);
 }
 function getAccessToken() {
     return sessionStorage.getItem("access_token");
@@ -145,12 +146,11 @@ async function exchangeCodeForToken(authCode){
 async function handleAuthRedirect(){
     const authCode = getCodeFromUrl();
     let tokens = "";
-    console.log("Code: "+authCode);
     if(authCode){
       tokens = await exchangeCodeForToken(authCode);
       console.log(tokens);
     }
-    if (tokens.accessToken) {
+    if (tokens.access_token) {
         storeTokens(tokens);
         // clean URL
         window.history.replaceState({}, document.title, window.location.pathname);
