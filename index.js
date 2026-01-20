@@ -125,18 +125,22 @@ function getCodeFromUrl(){
 async function exchangeCodeForToken(authCode){
     const verifier = sessionStorage.getItem("pkce_verifier");
     const tokenUrl = cognitoDomain +"/oauth2/token"; 
+    const params = new URLSearchParams();
+    params.append("grant_type", "authorization_code");
+    params.append("client_id", clientId);
+    params.append("code", authCode);
+    params.append("redirect_uri", redirectUri);
+    params.append("code_verifier", verifier);
+    
     const response = await fetch(tokenUrl,{
         method: "POST",
         headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "grant_type": "authorization_code",
-            "client_id": clientId,
-            "code": authCode,
-            "redirectUri": redirectUri,
-            "code_verifier": verifier
-        }
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: params.toString()
     });
-    return response.json();
+    const data = await response.json();
+    return data;
 }
 async function handleAuthRedirect(){
     const authCode = getCodeFromUrl();
