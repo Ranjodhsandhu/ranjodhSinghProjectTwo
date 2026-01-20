@@ -144,25 +144,18 @@ async function exchangeCodeForToken(authCode){
 async function handleAuthRedirect(){
     const authCode = getCodeFromUrl();
     let tokens = "";
+    console.log("Code: "+authCode);
     if(authCode){
       tokens = await exchangeCodeForToken(authCode);
       console.log(tokens);
     }
     if (tokens.accessToken) {
-    storeTokens(tokens);
-    // clean URL
-    window.history.replaceState({}, document.title, window.location.pathname);
-  }
+        storeTokens(tokens);
+        // clean URL
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
     updateAuthUI();
 }
 document.addEventListener("DOMContentLoaded", () => {
-  // const tokens = getTokensFromUrl();
-  // const userInfo = parseJWTIdToken(tokens.idToken) || parseJWTIdToken(sessionStorage.getItem("id_token"));
-  // const username = userInfo?.name || '';
-  // if(username)
-  //     document.getElementById("welcome").innerText = `Hi, ${username}`;
-  handleAuthRedirect().catch(err=>{
-      console.error("Auth redirect failed:", err);
-  })
-  
+  handleAuthRedirect();
 });
