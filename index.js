@@ -27,7 +27,6 @@ function callAwsData(){
       return res.json();
     })
     .then(data => {
-        console.log(data)
         document.getElementById('aws-data').innerText = data.body;       
     })
     .catch(err => console.error('Error fetching data from AWS:', err) );
@@ -148,7 +147,6 @@ async function handleAuthRedirect(){
     let tokens = "";
     if(authCode){
       tokens = await exchangeCodeForToken(authCode);
-      console.log(tokens);
     }
     if (tokens.access_token) {
         storeTokens(tokens);
