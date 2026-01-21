@@ -30,9 +30,10 @@ function callAwsData(){
           const table = document.getElementById("recipeTableWrapper");
           const tbody = document.getElementById("recipeTable");
           tbody.innerHTML = "";
+          const parsedBody = JSON.parse(data.body);
           console.log(data);
-          if (data?.body?.records?.length > 0) {
-              data.body.records.forEach(r => {
+          if ((parsedBody.records?.length) > 0) {
+              parsedBody.records.forEach(r => {
                 const tr = document.createElement("tr");
                 tr.innerHTML = `<td>${r.Name}</td>`;
                 tbody.appendChild(tr);
