@@ -27,7 +27,19 @@ function callAwsData(){
       return res.json();
     })
     .then(data => {
-        document.getElementById('aws-data').innerText = data.body;       
+          const table = document.getElementById("recipeTableWrapper");
+          const tbody = document.getElementById("recipeTable");
+          tbody.innerHTML = "";
+          if (data?.records?.length > 0) {
+              data.records.forEach(r => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `<td>${r.Name}</td>`;
+                tbody.appendChild(tr);
+              });
+              table.classList.remove("hidden"); // show
+          } else {
+              table.classList.add("hidden"); // keep hidden if no data
+          }
     })
     .catch(err => console.error('Error fetching data from AWS:', err) );
 }
