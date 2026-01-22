@@ -1,4 +1,4 @@
-const { cognitoDomain, clientId, redirectUri, logoutUri, helloEndpoint, addRecipeEndpoint} = window.APP_CONFIG;
+const { cognitoDomain, clientId, redirectUri, logoutUri, helloEndpoint, recipeEndpoint} = window.APP_CONFIG;
 async function redirectToCognitoSignin(){
     const verifier = generateRandomString(64);
     sessionStorage.setItem("pkce_verifier", verifier);
@@ -205,7 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const value = input.value.trim();
     console.log('Saving recipe name: '+value);
-    fetch(addRecipeEndpoint, {
+    fetch(recipeEndpoint, {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${aToken}`,
