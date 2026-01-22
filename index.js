@@ -1,1 +1,236 @@
-const{cognitoDomain:cognitoDomain,clientId:clientId,redirectUri:redirectUri,logoutUri:logoutUri,recipeEndpoint:recipeEndpoint}=window.APP_CONFIG;async function redirectToCognitoSignin(){const e=generateRandomString(64);sessionStorage.setItem("pkce_verifier",e);const n=await generateCodeChallenge(e);window.location.href=`${cognitoDomain}/login?client_id=${clientId}&response_type=code&scope=email+openid+phone+profile&redirect_uri=${redirectUri}&code_challenge=${n}&code_challenge_method=S256`}function signOutRedirect(){window.location.href=`${cognitoDomain}/logout/?client_id=${clientId}&logout_uri=${logoutUri}`}function callAwsData(){const e=getAccessToken(),n=document.getElementById("spinner");n.classList.remove("hidden"),fetch(recipeEndpoint,{method:"GET",headers:{Authorization:`Bearer ${e}`,"Content-Type":"application/json"}}).then(e=>(401===e.status&&redirectToCognitoSignin(),e.json())).then(e=>{const t=document.getElementById("recipeTableWrapper"),o=document.getElementById("recipeTable");o.innerHTML="";const i=e;i.records?.length>0?(i.records.forEach(e=>{const n=document.createElement("tr");n.innerHTML=`<td>${e.Name}</td>`,o.appendChild(n)}),t.classList.remove("hidden")):t.classList.add("hidden"),n.classList.add("hidden")}).catch(e=>console.error("Error fetching data from AWS:",e))}function generateRandomString(e){const n="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";let t="";for(let o=0;o<e;o++)t+=n.charAt(Math.floor(62*Math.random()));return t}async function convertSH256(e){const n=(new TextEncoder).encode(e);return window.crypto.subtle.digest("SHA-256",n)}function base64UrlEncode(e){return btoa(String.fromCharCode(...new Uint8Array(e))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"")}async function generateCodeChallenge(e){return base64UrlEncode(await convertSH256(e))}function storeTokens(e){sessionStorage.setItem("access_token",e.access_token),sessionStorage.setItem("id_token",e.id_token),sessionStorage.setItem("expires_in",e.expires_in)}function getAccessToken(){return sessionStorage.getItem("access_token")}function getIdToken(){return sessionStorage.getItem("id_token")}function getExpiresIn(){return sessionStorage.getItem("expires_in")}function parseJWTIdToken(e){if(!e)return null;const n=e.split(".")[1].replace(/-/g,"+").replace(/_/,"/"),t=decodeURIComponent(atob(n).split("").map(e=>"%"+("00"+e.charCodeAt(0).toString(16)).slice(-2)).join(""));return JSON.parse(t)}function isLoggedIn(){if(!getIdToken())return!1;try{const e=parseJWTIdToken(sessionStorage.getItem("id_token"));return Date.now()<1e3*e.exp}catch{return!1}}function updateAuthUI(){const e=document.getElementById("authorize"),n=document.getElementById("welcome");if(isLoggedIn()){const t=parseJWTIdToken(sessionStorage.getItem("id_token")).name;e.innerText="Sign Out",e.onclick=signOutRedirect,n.innerText=`Hi, ${t}`}else e.innerText="Sign In",e.onclick=redirectToCognitoSignin,n.innerText=""}function getCodeFromUrl(){return new URLSearchParams(window.location.search).get("code")}async function exchangeCodeForToken(e){const n=sessionStorage.getItem("pkce_verifier"),t=cognitoDomain+"/oauth2/token",o=new URLSearchParams;o.append("grant_type","authorization_code"),o.append("client_id",clientId),o.append("code",e),o.append("redirect_uri",redirectUri),o.append("code_verifier",n);const i=await fetch(t,{method:"POST",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:o.toString()});return await i.json()}async function handleAuthRedirect(){const e=getCodeFromUrl();let n="";e&&(n=await exchangeCodeForToken(e)),n.access_token&&(storeTokens(n),window.history.replaceState({},document.title,window.location.pathname)),updateAuthUI()}document.addEventListener("DOMContentLoaded",()=>{handleAuthRedirect()});const openBtn=document.getElementById("openPopupBtn"),popup=document.getElementById("popup"),cancelRecipe=document.getElementById("cancelRecipe"),addRecipe=document.getElementById("addRecipe"),input=document.getElementById("popupInput");openBtn.addEventListener("click",()=>{popup.classList.remove("hidden"),input.value="",input.focus()}),cancelRecipe.addEventListener("click",()=>{popup.classList.add("hidden")}),addRecipe.addEventListener("click",()=>{const e=document.getElementById("recipespinner");e.classList.remove("hidden");const n=getAccessToken(),t=input.value.trim();0!==t.length?fetch(recipeEndpoint,{method:"POST",headers:{Authorization:`Bearer ${n}`,"Content-Type":"application/json"},body:JSON.stringify({name:t})}).then(e=>(401===e.status&&redirectToCognitoSignin(),e.json())).then(n=>{e.classList.add("hidden"),popup.classList.add("hidden")}).catch(e=>console.error("Error Saving Recipe:",e)):alert("Please enter a recipe name")}),popup.addEventListener("click",e=>{e.target===popup&&popup.classList.add("hidden")});
+const { cognitoDomain, clientId, redirectUri, logoutUri, recipeEndpoint} = window.APP_CONFIG;
+async function redirectToCognitoSignin(){
+    const verifier = generateRandomString(64);
+    sessionStorage.setItem("pkce_verifier", verifier);
+    const challenge = await generateCodeChallenge(verifier); 
+    const responseType = "code";
+    const scope= "email+openid+phone+profile";
+    window.location.href = `${cognitoDomain}/login?client_id=${clientId}&response_type=${responseType}&scope=${scope}&redirect_uri=${redirectUri}&code_challenge=${challenge}&code_challenge_method=S256`;
+}
+function signOutRedirect () {
+    window.location.href = `${cognitoDomain}/logout/?client_id=${clientId}&logout_uri=${logoutUri}`;
+};
+
+function callAwsData(){
+    const aToken = getAccessToken();
+    const spinner = document.getElementById("spinner");
+    spinner.classList.remove("hidden");
+    
+    
+    fetch(recipeEndpoint, {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${aToken}`,
+        "Content-Type": "application/json"
+      }
+    })
+    .then(res => {
+      if (res.status === 401) {
+        redirectToCognitoSignin();
+      }
+      return res.json();
+    })
+    .then(data => {
+          const table = document.getElementById("recipeTableWrapper");
+          const tbody = document.getElementById("recipeTable");
+          tbody.innerHTML = "";
+          const parsedBody = data;
+          if ((parsedBody.records?.length) > 0) {
+              parsedBody.records.forEach(r => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `<td>${r.Name}</td>`;
+                tbody.appendChild(tr);
+              });
+              table.classList.remove("hidden"); // show
+          } else {
+              table.classList.add("hidden"); // keep hidden if no data
+          }
+          spinner.classList.add("hidden");
+    })
+    .catch(err => console.error('Error fetching data from AWS:', err) );
+}
+function generateRandomString(length){
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let result = "";
+    for(let i=0; i<length; i++){
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return result;
+}
+async function convertSH256(plain){
+    const encoder = new TextEncoder();
+    const data = encoder.encode(plain);
+    return window.crypto.subtle.digest("SHA-256",data);
+}
+function base64UrlEncode(buffer){
+    return btoa(String.fromCharCode(...new Uint8Array(buffer)))
+        .replace(/\+/g, "-")
+        .replace(/\//g, "_")
+        .replace(/=+$/, "");
+}
+async function generateCodeChallenge(verifier){
+    const hashed = await convertSH256(verifier);
+    return base64UrlEncode(hashed);
+}
+// following method is used when using implicit grant because tokens are directly sent with the URL
+// function getTokensFromUrl() {
+//   const hash = window.location.hash.substring(1); // remove '#'
+//   const params = new URLSearchParams(hash);
+
+//   return {
+//     accessToken: params.get("access_token"),
+//     idToken: params.get("id_token"),
+//     expiresIn: params.get("expires_in")
+//   };
+// }
+function storeTokens(tokens) {
+    sessionStorage.setItem("access_token", tokens.access_token);
+    sessionStorage.setItem("id_token", tokens.id_token);
+    sessionStorage.setItem("expires_in", tokens.expires_in);
+}
+function getAccessToken() {
+    return sessionStorage.getItem("access_token");
+}
+function getIdToken() {
+    return sessionStorage.getItem("id_token");
+}
+function getExpiresIn(){
+    return sessionStorage.getItem("expires_in");
+}
+function parseJWTIdToken(token){
+    if(!token) return null;
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/,'/');
+    const jsonPayload = decodeURIComponent(
+        atob(base64)
+            .split('')
+            .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+            .join('')
+    );
+    return JSON.parse(jsonPayload);
+}
+function isLoggedIn(){
+     const token = getIdToken();
+     if(!token) return false;
+     try{
+         const userInfo = parseJWTIdToken(sessionStorage.getItem("id_token"));
+         return Date.now() < userInfo.exp * 1000;
+     } catch{
+         return false;
+     }
+}
+function updateAuthUI(){
+    const authBtn = document.getElementById("authorize");
+    const welcome = document.getElementById("welcome");
+    if(isLoggedIn()){
+        const userInfo = parseJWTIdToken(sessionStorage.getItem("id_token"));
+        const username = userInfo.name;
+        authBtn.innerText = "Sign Out";
+        authBtn.onclick = signOutRedirect;
+
+        welcome.innerText  = `Hi, ${username}`;
+    }else{
+        authBtn.innerText = "Sign In";
+        authBtn.onclick = redirectToCognitoSignin;
+
+        welcome.innerText  = "";
+    }
+}
+function getCodeFromUrl(){
+    const params = new URLSearchParams(window.location.search);
+    return params.get("code");
+}
+async function exchangeCodeForToken(authCode){
+    const verifier = sessionStorage.getItem("pkce_verifier");
+    const tokenUrl = cognitoDomain +"/oauth2/token"; 
+    const params = new URLSearchParams();
+    params.append("grant_type", "authorization_code");
+    params.append("client_id", clientId);
+    params.append("code", authCode);
+    params.append("redirect_uri", redirectUri);
+    params.append("code_verifier", verifier);
+    
+    const response = await fetch(tokenUrl,{
+        method: "POST",
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: params.toString()
+    });
+    const data = await response.json();
+    return data;
+}
+async function handleAuthRedirect(){
+    const authCode = getCodeFromUrl();
+    let tokens = "";
+    if(authCode){
+      tokens = await exchangeCodeForToken(authCode);
+    }
+    if (tokens.access_token) {
+        storeTokens(tokens);
+        // clean URL
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+    updateAuthUI();
+}
+document.addEventListener("DOMContentLoaded", () => {
+  handleAuthRedirect();
+});
+
+  const openBtn = document.getElementById("openPopupBtn");
+  const popup = document.getElementById("popup");
+  const cancelRecipe = document.getElementById("cancelRecipe");
+  const addRecipe = document.getElementById("addRecipe");
+  const input = document.getElementById("popupInput");
+
+  openBtn.addEventListener("click", () => {
+    popup.classList.remove("hidden");
+    input.value = "";
+    input.focus();
+  });
+
+  cancelRecipe.addEventListener("click", () => {
+    popup.classList.add("hidden");
+  });
+
+  addRecipe.addEventListener("click", () => {
+    const recipespinner = document.getElementById("recipespinner");
+    recipespinner.classList.remove("hidden");
+    const aToken = getAccessToken();
+    const value = input.value.trim();
+    if(value.length === 0) {
+      alert("Please enter a recipe name");
+      recipespinner.classList.add("hidden");
+      return;
+    }else{
+      fetch(recipeEndpoint, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${aToken}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({name: value })
+      })
+      .then(res => {
+        if (res.status === 401) {
+          redirectToCognitoSignin();
+        }
+        return res.json();
+      })
+      .then(data => {
+          recipespinner.classList.add("hidden");
+          popup.classList.add("hidden");
+      })
+      .catch(err => {
+          console.error('Error Saving Recipe:', err);
+          recipespinner.classList.add("hidden");
+          popup.classList.add("hidden");
+          alert('There was an error saving your recipe');
+      });
+    }
+  });
+  
+  // Optional: close on clicking outside the popup
+  popup.addEventListener("click", (e) => {
+    if(e.target === popup) popup.classList.add("hidden");
+  });
