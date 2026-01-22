@@ -1,4 +1,4 @@
-const { cognitoDomain, clientId, redirectUri, logoutUri, helloEndpoint} = window.APP_CONFIG;
+const { cognitoDomain, clientId, redirectUri, logoutUri, helloEndpoint, addRecipeEndpoint} = window.APP_CONFIG;
 async function redirectToCognitoSignin(){
     const verifier = generateRandomString(64);
     sessionStorage.setItem("pkce_verifier", verifier);
@@ -196,12 +196,36 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   addRecipe.addEventListener("click", () => {
-      console.log('clicked add');
-    const value = input.value.trim();
+    const aToken = getAccessToken();
+    
     if(value.length === 0) {
-      alert("Please enter a value");
+      alert("Please enter a recipe name");
       return;
     }
+    
+    const value = input.value.trim();
+    console.log('Saving recipe name: '+value);
+    fetch(addRecipeEndpoint, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${aToken}`,
+        "Content-Type": "application/json"
+      },
+      body: {
+          name: value          
+      }
+    })
+    .then(res => {
+      if (res.status === 401) {
+        redirectToCognitoSignin();
+      }
+      return res.json();
+    })
+    .then(data => {
+        console.log(data);
+    })
+    .catch(err => console.error('Error Saving Recipe:', err) );
+    
     popup.classList.add("hidden");
   });
 
