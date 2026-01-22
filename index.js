@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Please enter a recipe name");
       return;
     }
-    console.log('Saving recipe name: '+value);
+    
     fetch(recipeEndpoint, {
       method: "POST",
       headers: {
@@ -219,10 +219,9 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then(data => {
         console.log(data);
+        popup.classList.add("hidden");
     })
     .catch(err => console.error('Error Saving Recipe:', err) );
-    
-    popup.classList.add("hidden");
   });
 
   // Optional: close on clicking outside the popup
