@@ -197,13 +197,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   addRecipe.addEventListener("click", () => {
     const aToken = getAccessToken();
-    
+    const value = input.value.trim();
     if(value.length === 0) {
       alert("Please enter a recipe name");
       return;
     }
-    
-    const value = input.value.trim();
     console.log('Saving recipe name: '+value);
     fetch(recipeEndpoint, {
       method: "POST",
