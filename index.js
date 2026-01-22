@@ -1,4 +1,4 @@
-const { cognitoDomain, clientId, redirectUri, logoutUri, helloEndpoint, recipeEndpoint} = window.APP_CONFIG;
+const { cognitoDomain, clientId, redirectUri, logoutUri, recipeEndpoint} = window.APP_CONFIG;
 async function redirectToCognitoSignin(){
     const verifier = generateRandomString(64);
     sessionStorage.setItem("pkce_verifier", verifier);
@@ -34,8 +34,7 @@ function callAwsData(){
           const table = document.getElementById("recipeTableWrapper");
           const tbody = document.getElementById("recipeTable");
           tbody.innerHTML = "";
-          const parsedBody = data;//JSON.parse(data);
-          console.log(data);
+          const parsedBody = data;
           if ((parsedBody.records?.length) > 0) {
               parsedBody.records.forEach(r => {
                 const tr = document.createElement("tr");
@@ -185,14 +184,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("popupInput");
 
   openBtn.addEventListener("click", () => {
-      console.log('open btn clicked');
     popup.classList.remove("hidden");
     input.value = "";
     input.focus();
   });
 
   cancelRecipe.addEventListener("click", () => {
-      console.log('Clicked cancel');
     popup.classList.add("hidden");
   });
 
@@ -221,7 +218,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return res.json();
     })
     .then(data => {
-        console.log(data);
         recipespinner.classList.add("hidden");
         popup.classList.add("hidden");
     })
