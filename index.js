@@ -176,3 +176,34 @@ async function handleAuthRedirect(){
 document.addEventListener("DOMContentLoaded", () => {
   handleAuthRedirect();
 });
+
+  const openBtn = document.getElementById("openPopupBtn");
+  const popup = document.getElementById("popup");
+  const cancelRecipe = document.getElementById("cancelRecipe");
+  const addRecipe = document.getElementById("addRecipe");
+  const input = document.getElementById("popupInput");
+
+  openBtn.addEventListener("click", () => {
+    popup.classList.remove("hidden");
+    input.value = "";
+    input.focus();
+  });
+
+  cancelRecipe.addEventListener("click", () => {
+    popup.classList.add("hidden");
+  });
+
+  addRecipe.addEventListener("click", () => {
+    const value = input.value.trim();
+    if(value.length === 0) {
+      alert("Please enter a value");
+      return;
+    }
+    console.log("Value added:", value);
+    popup.classList.add("hidden");
+  });
+
+  // Optional: close on clicking outside the popup
+  popup.addEventListener("click", (e) => {
+    if(e.target === popup) popup.classList.add("hidden");
+  });
