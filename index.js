@@ -202,12 +202,10 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Please enter a value");
       return;
     }
-    console.log("Value added:", value);
     popup.classList.add("hidden");
   });
 
   // Optional: close on clicking outside the popup
   popup.addEventListener("click", (e) => {
-      console.log(e.target);
-    if(e.target !== popup) popup.classList.add("hidden");
+    if(e.target === popup) popup.classList.add("hidden");
   });
