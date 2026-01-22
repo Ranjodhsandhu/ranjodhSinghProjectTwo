@@ -13,6 +13,9 @@ function signOutRedirect () {
 
 function callAwsData(){
     const aToken = getAccessToken();
+    spinner.classList.remove("hidden");
+    
+    
     fetch(helloEndpoint, {
       method: "GET",
       headers: {
@@ -42,6 +45,7 @@ function callAwsData(){
           } else {
               table.classList.add("hidden"); // keep hidden if no data
           }
+          spinner.classList.add("hidden");
     })
     .catch(err => console.error('Error fetching data from AWS:', err) );
 }
