@@ -184,16 +184,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("popupInput");
 
   openBtn.addEventListener("click", () => {
+      consol.log('open btn clicked');
     popup.classList.remove("hidden");
     input.value = "";
     input.focus();
   });
 
   cancelRecipe.addEventListener("click", () => {
+      console.log('Clicked cancel');
     popup.classList.add("hidden");
   });
 
   addRecipe.addEventListener("click", () => {
+      console.log('clicked add');
     const value = input.value.trim();
     if(value.length === 0) {
       alert("Please enter a value");
@@ -205,5 +208,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Optional: close on clicking outside the popup
   popup.addEventListener("click", (e) => {
-    if(e.target === popup) popup.classList.add("hidden");
+      console.log(e.target);
+    if(e.target !== popup) popup.classList.add("hidden");
   });
