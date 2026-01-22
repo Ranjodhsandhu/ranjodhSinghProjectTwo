@@ -209,9 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Authorization": `Bearer ${aToken}`,
         "Content-Type": "application/json"
       },
-      body: {
-          name: value          
-      }
+      body: JSON.stringify({name: value })
     })
     .then(res => {
       if (res.status === 401) {
