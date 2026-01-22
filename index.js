@@ -13,6 +13,7 @@ function signOutRedirect () {
 
 function callAwsData(){
     const aToken = getAccessToken();
+    const spinner = document.getElementById("spinner");
     spinner.classList.remove("hidden");
     
     
@@ -196,6 +197,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   addRecipe.addEventListener("click", () => {
+    const recipespinner = document.getElementById("recipespinner");
+    recipespinner.classList.remove("hidden");
     const aToken = getAccessToken();
     const value = input.value.trim();
     if(value.length === 0) {
@@ -219,6 +222,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then(data => {
         console.log(data);
+        recipespinner.classList.add("hidden");
         popup.classList.add("hidden");
     })
     .catch(err => console.error('Error Saving Recipe:', err) );
