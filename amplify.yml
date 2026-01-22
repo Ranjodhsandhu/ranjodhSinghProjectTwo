@@ -3,7 +3,7 @@ frontend:
     phases:
         build:
             commands:
-                - cat config.template.js | sed "s|__COGNITO_DOMAIN__|$COGNITO_DOMAIN|g; s|__COGNITO_CLIENT_ID__|$COGNITO_CLIENT_ID|g; s|__COGNITO_REDIRECT_URI__|$COGNITO_REDIRECT_URI|g; s|__COGNITO_LOGOUT_URI__|$COGNITO_LOGOUT_URI|g; s|__HELLO_ENDPOINT__|$HELLO_ENDPOINT|g" > config.js
+                - cat config.template.js | sed "s|__COGNITO_DOMAIN__|$COGNITO_DOMAIN|g; s|__COGNITO_CLIENT_ID__|$COGNITO_CLIENT_ID|g; s|__COGNITO_REDIRECT_URI__|$COGNITO_REDIRECT_URI|g; s|__COGNITO_LOGOUT_URI__|$COGNITO_LOGOUT_URI|g; s|__HELLO_ENDPOINT__|$HELLO_ENDPOINT|g; s|__RECIPE_ENDPOINT__|$RECIPE_ENDPOINT|g" > config.js
     artifacts:
         baseDirectory: .
         files:
