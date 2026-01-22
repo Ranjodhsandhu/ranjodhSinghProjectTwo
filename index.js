@@ -17,7 +17,7 @@ function callAwsData(){
     spinner.classList.remove("hidden");
     
     
-    fetch(helloEndpoint, {
+    fetch(recipeEndpoint, {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${aToken}`,
