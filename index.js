@@ -184,7 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById("popupInput");
 
   openBtn.addEventListener("click", () => {
-      consol.log('open btn clicked');
+      console.log('open btn clicked');
     popup.classList.remove("hidden");
     input.value = "";
     input.focus();
