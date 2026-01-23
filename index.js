@@ -16,58 +16,49 @@ function callAwsData(retries = 1){
     const spinner = document.getElementById("spinner");
     spinner.classList.remove("hidden");
     
-    try{
-        fetch(recipeEndpoint, {
-          method: "GET",
-          headers: {
-            "Authorization": `Bearer ${aToken}`,
-            "Content-Type": "application/json"
-          }
-        })
-        .then(res => {
-          console.log(res.ok+'-'+res.status+'-'+res.statusText);
-          if (res.status === 401) {
-            redirectToCognitoSignin();
-          }
-          if(!res.ok){
-            if (retries > 0) {
-              console.warn("Get Recipes API call failed, retrying");
-              return callAwsData(retries - 1); // retry once
-            } else {
-              throw err; // give up after retry
-            }
-          }
-          
-          return res.json();
-        })
-        .then(data => {
-              const table = document.getElementById("recipeTableWrapper");
-              const tbody = document.getElementById("recipeTable");
-              tbody.innerHTML = "";
-              const parsedBody = data;
-              if ((parsedBody.records?.length) > 0) {
-                  parsedBody.records.forEach(r => {
-                    const tr = document.createElement("tr");
-                    const tdName = document.createElement('td');
-                    tdName.textContent = r.Name;
-                    tr.appendChild(tdName);
-                    tbody.appendChild(tr);
-                  });
-                  table.classList.remove("hidden"); // show
-              } else {
-                  table.classList.add("hidden"); // keep hidden if no data
-              }
-              spinner.classList.add("hidden");
-        })
-        .catch(err => console.error('Error fetching data from AWS:', err) );
-    }catch(err){
-        console.warn("Get Recipes API call failed:", err);
+    fetch(recipeEndpoint, {
+      method: "GET",
+      headers: {
+        "Authorization": `Bearer ${aToken}`,
+        "Content-Type": "application/json"
+      }
+    })
+    .then(res => {
+      console.log(res.ok+'-'+res.status);
+      if (res.status === 401) {
+        redirectToCognitoSignin();
+      }
+      if(!res.ok){
         if (retries > 0) {
+          console.warn("Get Recipes API call failed, retrying");
           return callAwsData(retries - 1); // retry once
         } else {
           throw err; // give up after retry
         }
-    }
+      }
+      
+      return res.json();
+    })
+    .then(data => {
+          const table = document.getElementById("recipeTableWrapper");
+          const tbody = document.getElementById("recipeTable");
+          tbody.innerHTML = "";
+          const parsedBody = data;
+          if ((parsedBody?.records?.length) > 0) {
+              parsedBody?.records?.forEach(r => {
+                const tr = document.createElement("tr");
+                const tdName = document.createElement('td');
+                tdName.textContent = r.Name;
+                tr.appendChild(tdName);
+                tbody.appendChild(tr);
+              });
+              table.classList.remove("hidden"); // show
+          } else {
+              table.classList.add("hidden"); // keep hidden if no data
+          }
+          spinner.classList.add("hidden");
+    })
+    .catch(err => console.error('Error fetching data from AWS:', err) );
 }
 function generateRandomString(length){
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
