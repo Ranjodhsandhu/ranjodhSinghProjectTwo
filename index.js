@@ -11,10 +11,6 @@ function signOutRedirect () {
     window.location.href = `${cognitoDomain}/logout/?client_id=${clientId}&logout_uri=${logoutUri}`;
 };
 
-// Usage
-getDataWithRetry(1)
-  .then(data => console.log(data))
-  .catch(err => alert("Failed to load data. Please try again."));
 function callAwsData(retries = 1){
     const aToken = getAccessToken();
     const spinner = document.getElementById("spinner");
@@ -57,7 +53,7 @@ function callAwsData(retries = 1){
     }catch(err){
         console.warn("Get Recipes API call failed:", err);
         if (retries > 0) {
-          return await callAwsData(retries - 1); // retry once
+          return callAwsData(retries - 1); // retry once
         } else {
           throw err; // give up after retry
         }      
