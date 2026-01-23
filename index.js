@@ -25,7 +25,7 @@ function callAwsData(retries = 1){
           }
         })
         .then(res => {
-          console.log(res);
+          console.log(res.ok+'-'+res.status+'-'+res.statusText);
           if (res.status === 401) {
             redirectToCognitoSignin();
           }
