@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta http-equiv="Content-Security-Policy"
-          content="default-src 'self';script-src 'self';object-src 'none'; base-uri 'none';">
     <!-- Load font styles from google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i&display=swap" rel="stylesheet">
@@ -100,6 +98,10 @@
                     <li id="welcome"></li>
                     <li><a id="authorize">Sign In</a></li>
                     <li><a href="#home" class="current">home</a></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
                 </ul>
                 <label for="toggle" class="menu-icon"><i><span class="navicon"></span></i></label>
             </nav>
@@ -133,7 +135,7 @@
                       </div>
                     </div>
                     <button id="openPopupBtn">Add A Recipe</button>
-                    <button onclick="callAwsData()">view recipes</button>
+                    <button id="viewrecipe">view recipes</button>
                     <div id="spinner" class="spinner hidden"></div>
                     <table id="recipeTableWrapper" class="sf-table hidden">
                       <thead>
