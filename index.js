@@ -10,7 +10,6 @@ async function redirectToCognitoSignin(){
 function signOutRedirect () {
     window.location.href = `${cognitoDomain}/logout/?client_id=${clientId}&logout_uri=${logoutUri}`;
 };
-
 function callAwsData(){
     const aToken = getAccessToken();
     const spinner = document.getElementById("spinner");
@@ -234,3 +233,8 @@ document.addEventListener("DOMContentLoaded", () => {
   popup.addEventListener("click", (e) => {
     if(e.target === popup) popup.classList.add("hidden");
   });
+
+  const viewRecipe = document.getElementById("viewrecipe");
+  viewRecipe.addEventListener("click",() => {
+      callAwsData();
+  })
