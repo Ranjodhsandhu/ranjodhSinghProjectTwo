@@ -29,6 +29,15 @@ function callAwsData(retries = 1){
           if (res.status === 401) {
             redirectToCognitoSignin();
           }
+          if(!res.ok){
+            if (retries > 0) {
+              console.warn("Get Recipes API call failed, retrying");
+              return callAwsData(retries - 1); // retry once
+            } else {
+              throw err; // give up after retry
+            }
+          }
+          
           return res.json();
         })
         .then(data => {
@@ -57,7 +66,7 @@ function callAwsData(retries = 1){
           return callAwsData(retries - 1); // retry once
         } else {
           throw err; // give up after retry
-        }      
+        }
     }
 }
 function generateRandomString(length){
