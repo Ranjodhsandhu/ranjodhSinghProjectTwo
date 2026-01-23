@@ -10,45 +10,58 @@ async function redirectToCognitoSignin(){
 function signOutRedirect () {
     window.location.href = `${cognitoDomain}/logout/?client_id=${clientId}&logout_uri=${logoutUri}`;
 };
-function callAwsData(){
+
+// Usage
+getDataWithRetry(1)
+  .then(data => console.log(data))
+  .catch(err => alert("Failed to load data. Please try again."));
+function callAwsData(retries = 1){
     const aToken = getAccessToken();
     const spinner = document.getElementById("spinner");
     spinner.classList.remove("hidden");
     
-    
-    fetch(recipeEndpoint, {
-      method: "GET",
-      headers: {
-        "Authorization": `Bearer ${aToken}`,
-        "Content-Type": "application/json"
-      }
-    })
-    .then(res => {
-      if (res.status === 401) {
-        redirectToCognitoSignin();
-      }
-      return res.json();
-    })
-    .then(data => {
-          const table = document.getElementById("recipeTableWrapper");
-          const tbody = document.getElementById("recipeTable");
-          tbody.innerHTML = "";
-          const parsedBody = data;
-          if ((parsedBody.records?.length) > 0) {
-              parsedBody.records.forEach(r => {
-                const tr = document.createElement("tr");
-                const tdName = document.createElement('td');
-                tdName.textContent = r.Name;
-                tr.appendChild(tdName);
-                tbody.appendChild(tr);
-              });
-              table.classList.remove("hidden"); // show
-          } else {
-              table.classList.add("hidden"); // keep hidden if no data
+    try{
+        fetch(recipeEndpoint, {
+          method: "GET",
+          headers: {
+            "Authorization": `Bearer ${aToken}`,
+            "Content-Type": "application/json"
           }
-          spinner.classList.add("hidden");
-    })
-    .catch(err => console.error('Error fetching data from AWS:', err) );
+        })
+        .then(res => {
+          if (res.status === 401) {
+            redirectToCognitoSignin();
+          }
+          return res.json();
+        })
+        .then(data => {
+              const table = document.getElementById("recipeTableWrapper");
+              const tbody = document.getElementById("recipeTable");
+              tbody.innerHTML = "";
+              const parsedBody = data;
+              if ((parsedBody.records?.length) > 0) {
+                  parsedBody.records.forEach(r => {
+                    const tr = document.createElement("tr");
+                    const tdName = document.createElement('td');
+                    tdName.textContent = r.Name;
+                    tr.appendChild(tdName);
+                    tbody.appendChild(tr);
+                  });
+                  table.classList.remove("hidden"); // show
+              } else {
+                  table.classList.add("hidden"); // keep hidden if no data
+              }
+              spinner.classList.add("hidden");
+        })
+        .catch(err => console.error('Error fetching data from AWS:', err) );
+    }catch(err){
+        console.warn("Get Recipes API call failed:", err);
+        if (retries > 0) {
+          return await callAwsData(retries - 1); // retry once
+        } else {
+          throw err; // give up after retry
+        }      
+    }
 }
 function generateRandomString(length){
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -238,5 +251,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const viewRecipe = document.getElementById("viewrecipe");
   viewRecipe.addEventListener("click",() => {
-      callAwsData();
+      callAwsData(1);
   })
