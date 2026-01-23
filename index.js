@@ -37,7 +37,9 @@ function callAwsData(){
           if ((parsedBody.records?.length) > 0) {
               parsedBody.records.forEach(r => {
                 const tr = document.createElement("tr");
-                tr.innerHTML = `<td>${r.Name}</td>`;
+                const tdName = document.createElement('td');
+                tdName.textContent = r.Name;
+                tr.appendChild(tdName);
                 tbody.appendChild(tr);
               });
               table.classList.remove("hidden"); // show
@@ -197,8 +199,8 @@ document.addEventListener("DOMContentLoaded", () => {
     recipespinner.classList.remove("hidden");
     const aToken = getAccessToken();
     const value = input.value.trim();
-    if(value.length === 0) {
-      alert("Please enter a recipe name");
+    if((value.length === 0) && (!/^[a-zA-Z0-9 _-]{1,100}$/.test(value))) {
+      alert("Please enter a valid recipe name");
       recipespinner.classList.add("hidden");
       return;
     }else{
